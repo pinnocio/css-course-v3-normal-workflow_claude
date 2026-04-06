@@ -1,0 +1,160 @@
+---
+title: "Computational Social Science"
+subtitle: "A Graduate & Undergraduate Course"
+author: "Course Instructor"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    theme: flatly
+    highlight: tango
+    toc: true
+    toc_float: true
+    toc_depth: 2
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+library(kableExtra)
+```
+
+---
+
+## Welcome
+
+This course sits at the intersection of **sociology, political science, economics, psychology, communication, public health, criminology, and geography** — united by computational methods and a commitment to understanding the social world.
+
+It is built on three commitments:
+
+> **Disciplinary pluralism** — no single discipline owns social science
+> **Methodological pluralism** — quantitative rigor and qualitative depth are complementary
+> **Computational power with human judgment** — code is the tool; theory and ethics are the compass
+
+---
+
+## Course Flow
+
+```
+Epistemology & Foundations (01)
+        ↓
+Qualitative Roots & Mixed Methods (02)
+        ↓
+Measurement — EFA & CFA (03)
+        ↓
+Structure — SEM & Causal Inference (04)
+        ↓
+Typologies — LCA, LPA, RCA, CCA (05)
+        ↓
+Language — Text Analysis (06)
+        ↓
+Relationships — Network Analysis (07)
+        ↓
+Space — Spatial Social Science (08)
+        ↓
+Integration: Your Own Research (09)
+```
+
+---
+
+## Modules
+
+```{r module-table}
+tibble::tribble(
+  ~Module, ~Title, ~Methods, ~Packages, ~Link,
+  "01", "Foundations, Epistemology & Working with Social Data",
+        "CSS overview, ethics, data types", "`gssr`, `tidyverse`",
+        "[Open](modules/module_01_foundations.html)",
+  "02", "Qualitative Roots & the Mixed-Methods Bridge",
+        "CGT, QCA, content analysis", "`tidytext`, `QCA`",
+        "[Open](modules/module_02_qualitative.html)",
+  "03", "Measurement — Exploratory and Confirmatory Factor Analysis",
+        "EFA, CFA, measurement invariance", "`psych`, `lavaan`",
+        "[Open](modules/module_03_efa_cfa.html)",
+  "04", "SEM, Regression, and Causal Inference",
+        "Path models, mediation, DAGs, DiD", "`lavaan`, `dagitty`, `did`",
+        "[Open](modules/module_04_sem_causal.html)",
+  "05", "Latent Class and Latent Profile Analysis",
+        "LCA, LPA, RCA, GoM, Q-method", "`poLCA`, `tidyLPA`, `corclass`",
+        "[Open](modules/module_05_latent.html)",
+  "06", "Computational Text Analysis",
+        "LDA, STM, embeddings, BERT", "`quanteda`, `stm`, `text2vec`",
+        "[Open](modules/module_06_text.html)",
+  "07", "Social Network Analysis",
+        "Centrality, communities, ERGM", "`igraph`, `statnet`",
+        "[Open](modules/module_07_networks.html)",
+  "08", "Spatial Social Science",
+        "GIS, LISA, spatial regression", "`sf`, `spdep`, `tidycensus`",
+        "[Open](modules/module_08_spatial.html)",
+  "09", "Integration, Multi-Method Pipelines, and Capstone",
+        "Multi-method design, capstone", "Everything",
+        "[Open](modules/module_09_integration.html)"
+) |>
+  kbl(col.names = c("Module", "Title", "Key Methods", "Primary Packages", ""),
+      escape = FALSE) |>
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"),
+                full_width = TRUE) |>
+  column_spec(1, bold = TRUE, width = "4em") |>
+  column_spec(4, monospace = TRUE) |>
+  column_spec(5, width = "5em")
+```
+
+---
+
+## Exercises
+
+```{r exercise-table}
+tibble::tribble(
+  ~Module, ~Title, ~Link,
+  "01", "Foundations of Computational Social Science",
+        "[Open](exercises/ex_01_foundations.html)",
+  "02", "Qualitative Roots & Mixed-Methods Bridge",
+        "[Open](exercises/ex_02_qualitative.html)",
+  "03", "Exploratory & Confirmatory Factor Analysis",
+        "[Open](exercises/ex_03_efa_cfa.html)",
+  "04", "Structural Equation Modeling & Causal Inference",
+        "[Open](exercises/ex_04_sem_causal.html)",
+  "05", "Latent Class, Profile, Relational & Correlational Class Analysis",
+        "[Open](exercises/ex_05_latent.html)",
+  "06", "Text Analysis & Computational Language Methods",
+        "[Open](exercises/ex_06_text.html)",
+  "07", "Network Analysis",
+        "[Open](exercises/ex_07_networks.html)",
+  "08", "Spatial Social Science",
+        "[Open](exercises/ex_08_spatial.html)"
+) |>
+  kbl(col.names = c("Module", "Title", ""),
+      escape = FALSE) |>
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"),
+                full_width = TRUE) |>
+  column_spec(1, bold = TRUE, width = "4em") |>
+  column_spec(3, width = "5em")
+```
+
+---
+
+## Key Datasets
+
+| Dataset | Source | Modules |
+|---------|--------|---------|
+| General Social Survey (GSS) | NORC / `gssr` R package | 01, 03, 05 |
+| ANES 2020 Time Series | electionstudies.org | 01, 04, 05 |
+| IPIP Big Five (`bfi`) | `psych` package | 03 |
+| World Values Survey Wave 7 | worldvaluessurvey.org | 03, 05 |
+| UN General Debate Corpus | Harvard Dataverse | 06 |
+| US Inaugural Addresses | `quanteda` package | 06 |
+| Zachary's Karate Club | `igraphdata` package | 07 |
+| Florentine Families | `ergm` package | 07 |
+| ACS (Census) | tidycensus + API key | 08 |
+
+---
+
+## Getting Started
+
+**Step 1:** Open `css_course.Rproj` in RStudio
+**Step 2:** Run `source("R/install_packages.R")`
+**Step 3:** Run `source("R/download_data.R")`
+**Step 4:** Open a module and click **Knit**
+
+---
+
+*Built with R, RMarkdown, and a deep commitment to open science.*
+*All materials: CC BY 4.0 | Code: MIT License*
