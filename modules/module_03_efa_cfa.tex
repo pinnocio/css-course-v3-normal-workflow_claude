@@ -1,0 +1,2659 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Module 03: Measurement --- Exploratory and Confirmatory Factor Analysis},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Module 03: Measurement --- Exploratory and Confirmatory Factor
+Analysis}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{Computational Social Science --- Graduate \& Undergraduate}
+\author{}
+\date{\vspace{-2.5em}2026-04-04}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Overview: Why Measurement
+Matters}\label{overview-why-measurement-matters}
+
+Before you can study relationships between constructs --- do political
+values predict civic engagement? does stress cause health decline? ---
+you need to establish that you are actually measuring those constructs.
+This is the measurement problem, and it is harder than it looks.
+
+The things social scientists most care about --- personality,
+intelligence, ideology, wellbeing, social capital, cultural capital ---
+are \textbf{latent variables}: theoretical constructs that cannot be
+directly observed but must be inferred from their effects on observable
+indicators. You cannot see ``neuroticism'' directly. You can see that a
+person worries frequently, gets irritated easily, has frequent mood
+swings, and often feels blue. Those four responses, taken together, give
+you information about an underlying tendency you call neuroticism.
+
+Factor analysis is the primary tool for modelling latent variables. It
+exists in two forms:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{EFA (Exploratory Factor Analysis):} Used when you do not know
+  (or want to discover) the factor structure. You let the data tell you
+  how many factors there are and which items belong to which.
+\item
+  \textbf{CFA (Confirmatory Factor Analysis):} Used when you have a
+  theoretically specified factor structure and want to test whether it
+  fits the data.
+\end{itemize}
+
+\textbf{Learning goals:}
+
+\begin{itemize}
+\tightlist
+\item
+  Explain what a latent variable is and why averaging items is not
+  equivalent
+\item
+  Check whether data is suitable for factor analysis (KMO, Bartlett)
+\item
+  Run EFA, decide on the number of factors, choose a rotation, and read
+  every element of the output
+\item
+  Specify and fit a CFA in lavaan
+\item
+  Read and interpret the full lavaan CFA output, section by section
+\item
+  Evaluate model fit using the standard indices with their benchmarks
+\item
+  Compute reliability with Cronbach's alpha and McDonald's omega
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{The Measurement Problem}\label{the-measurement-problem}
+
+\subsection{Why You Cannot Just Average
+Items}\label{why-you-cannot-just-average-items}
+
+Suppose you want to measure ``social trust'' using three survey items:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  ``Most people can be trusted.'' (1--5 agree)
+\item
+  ``People try to be helpful.'' (1--5 agree)
+\item
+  ``Most people are fair.'' (1--5 agree)
+\end{enumerate}
+
+A common approach is to sum or average these:
+\texttt{trust\_score\ =\ (item1\ +\ item2\ +\ item3)\ /\ 3}. This is
+called a \textbf{composite score}. It has several problems:
+
+\begin{itemize}
+\tightlist
+\item
+  It treats all three items as equally informative --- but some items
+  may be better indicators of the underlying construct than others.
+\item
+  It assumes all measurement error is random --- but items can have
+  systematic biases (e.g., item 1 is susceptible to mood effects not
+  related to trust).
+\item
+  It gives no information about how reliably the composite measures the
+  construct.
+\item
+  It cannot tell you whether the three items are actually measuring the
+  same underlying thing.
+\end{itemize}
+
+Factor analysis solves all of these problems. Instead of assuming
+equality, it \emph{estimates} the relationship between each item and the
+underlying factor. Instead of ignoring error, it explicitly models it.
+Instead of assuming a single factor, it tests whether one factor fits
+the data.
+
+\subsection{The Latent Variable Model}\label{the-latent-variable-model}
+
+The single-factor model says: \[y_i = \lambda_i \eta + \varepsilon_i\]
+
+\begin{itemize}
+\tightlist
+\item
+  \(y_i\): the observed score on item \(i\)
+\item
+  \(\eta\): the latent factor (unobserved; what you actually want to
+  measure)
+\item
+  \(\lambda_i\): the \textbf{factor loading} --- how strongly item \(i\)
+  is related to \(\eta\)
+\item
+  \(\varepsilon_i\): \textbf{unique variance} --- the part of item \(i\)
+  not explained by \(\eta\) (measurement error + item-specific content)
+\end{itemize}
+
+The \textbf{communality} of item \(i\) is \(h_i^2 = \lambda_i^2\) (in
+standardised form) --- the proportion of item variance explained by the
+factor. The \textbf{uniqueness} is \(u_i^2 = 1 - h_i^2\) --- the
+proportion \emph{not} explained.
+
+\textbf{Local independence} is the key assumption: within a given level
+of \(\eta\), the items are uncorrelated. All item intercorrelations
+arise from the shared latent factor. If two items remain correlated
+after controlling for the factor, the model is misspecified.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{The IPIP Big Five Dataset}\label{the-ipip-big-five-dataset}
+
+We use \texttt{bfi} from the \texttt{psych} package: 2,800 participants
+× 25 personality items + demographics. Items measure the Big Five
+personality traits (OCEAN: Openness, Conscientiousness, Extraversion,
+Agreeableness, Neuroticism), 5 items each, on a 6-point scale (1 = Very
+Inaccurate, 6 = Very Accurate).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(psych)}
+\FunctionTok{data}\NormalTok{(bfi)}
+
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Dataset dimensions:"}\NormalTok{, }\FunctionTok{nrow}\NormalTok{(bfi), }\StringTok{"participants ×"}\NormalTok{, }\FunctionTok{ncol}\NormalTok{(bfi), }\StringTok{"variables}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Dataset dimensions: 2800 participants × 28 variables
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"First 25 columns: personality items (A1–A5, C1–C5, E1–E5, N1–N5, O1–O5)}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## First 25 columns: personality items (A1–A5, C1–C5, E1–E5, N1–N5, O1–O5)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Remaining: gender, education, age}\SpecialCharTok{\textbackslash{}n\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Remaining: gender, education, age
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# A quick look at one item to understand the scale}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Distribution of item E3 (\textquotesingle{}Know how to captivate people\textquotesingle{}):}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Distribution of item E3 ('Know how to captivate people'):
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{table}\NormalTok{(bfi}\SpecialCharTok{$}\NormalTok{E3, }\AttributeTok{useNA=}\StringTok{"ifany"}\NormalTok{) }\SpecialCharTok{|\textgreater{}} \FunctionTok{print}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##    1    2    3    4    5    6 <NA> 
+##  149  293  412  826  743  352   25
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Scale: 1=Very Inaccurate, 6=Very Accurate}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Scale: 1=Very Inaccurate, 6=Very Accurate
+\end{verbatim}
+
+\begin{table}
+\centering
+\caption{\label{tab:item-table}IPIP Big Five Items. * = reverse-keyed (already recoded in bfi).}
+\centering
+\begin{tabu} to \linewidth {>{\raggedright}X>{\raggedright}X>{\raggedright}X}
+\hline
+Item & Trait & Wording\\
+\hline
+\ttfamily{\textbf{A1}} &  & Am indifferent to the feelings of others.*\\
+\cline{1-1}
+\cline{3-3}
+\ttfamily{\textbf{A2}} &  & Inquire about others' well-being.\\
+\cline{1-1}
+\cline{3-3}
+\ttfamily{\textbf{A3}} &  & Know how to comfort others.\\
+\cline{1-1}
+\cline{3-3}
+\ttfamily{\textbf{A4}} &  & Love children.\\
+\cline{1-1}
+\cline{3-3}
+\ttfamily{\textbf{A5}} & \multirow{-5}{*}{\raggedright\arraybackslash \textcolor[HTML]{2C6FAC}{Agreeableness}} & Make people feel at ease.\\
+\cline{1-3}
+\ttfamily{\textbf{C1}} &  & Am always prepared.\\
+\cline{1-1}
+\cline{3-3}
+\ttfamily{\textbf{C2}} &  & Leave my belongings around.*\\
+\cline{1-1}
+\cline{3-3}
+\ttfamily{\textbf{C3}} &  & Pay attention to details.\\
+\cline{1-1}
+\cline{3-3}
+\ttfamily{\textbf{C4}} &  & Make a mess of things.*\\
+\cline{1-1}
+\cline{3-3}
+\ttfamily{\textbf{C5}} & \multirow{-5}{*}{\raggedright\arraybackslash \textcolor[HTML]{2C6FAC}{Conscientiousness}} & Often forget to put things back.*\\
+\cline{1-3}
+\ttfamily{\textbf{E1}} &  & Don't talk a lot.*\\
+\cline{1-1}
+\cline{3-3}
+\ttfamily{\textbf{E2}} &  & Find it difficult to approach others.*\\
+\cline{1-1}
+\cline{3-3}
+\ttfamily{\textbf{E3}} &  & Know how to captivate people.\\
+\cline{1-1}
+\cline{3-3}
+\ttfamily{\textbf{E4}} &  & Make friends easily.\\
+\cline{1-1}
+\cline{3-3}
+\ttfamily{\textbf{E5}} & \multirow{-5}{*}{\raggedright\arraybackslash \textcolor[HTML]{2C6FAC}{Extraversion}} & Take charge.\\
+\cline{1-3}
+\ttfamily{\textbf{N1}} &  & Get irritated easily.\\
+\cline{1-1}
+\cline{3-3}
+\ttfamily{\textbf{N2}} &  & Seldom feel blue.*\\
+\cline{1-1}
+\cline{3-3}
+\ttfamily{\textbf{N3}} &  & Have frequent mood swings.\\
+\cline{1-1}
+\cline{3-3}
+\ttfamily{\textbf{N4}} &  & Often feel blue.\\
+\cline{1-1}
+\cline{3-3}
+\ttfamily{\textbf{N5}} & \multirow{-5}{*}{\raggedright\arraybackslash \textcolor[HTML]{2C6FAC}{Neuroticism}} & Panic easily.\\
+\cline{1-3}
+\ttfamily{\textbf{O1}} &  & Am not interested in abstract ideas.*\\
+\cline{1-1}
+\cline{3-3}
+\ttfamily{\textbf{O2}} &  & Have difficulty understanding abstract ideas.*\\
+\cline{1-1}
+\cline{3-3}
+\ttfamily{\textbf{O3}} &  & Do not have a good imagination.*\\
+\cline{1-1}
+\cline{3-3}
+\ttfamily{\textbf{O4}} &  & Have a vivid imagination.\\
+\cline{1-1}
+\cline{3-3}
+\ttfamily{\textbf{O5}} & \multirow{-5}{*}{\raggedright\arraybackslash \textcolor[HTML]{2C6FAC}{Openness}} & Am quick to understand things.\\
+\hline
+\end{tabu}
+\end{table}
+
+\textbf{Reverse-keyed items} are items where agreement indicates
+\emph{low} levels of the trait. ``Am indifferent to the feelings of
+others'' measures \emph{low} agreeableness. The \texttt{bfi} dataset has
+already reverse-coded these items, so higher scores always mean more of
+the trait. Always verify this before analysis.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Extract the 25 personality items; remove cases with any missing}
+\NormalTok{bfi\_items    }\OtherTok{\textless{}{-}}\NormalTok{ bfi[, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{25}\NormalTok{]}
+\NormalTok{bfi\_complete }\OtherTok{\textless{}{-}} \FunctionTok{na.omit}\NormalTok{(bfi\_items)}
+
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Total respondents:    "}\NormalTok{, }\FunctionTok{nrow}\NormalTok{(bfi\_items), }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Total respondents:     2800
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Complete cases:        "}\NormalTok{, }\FunctionTok{nrow}\NormalTok{(bfi\_complete), }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Complete cases:         2436
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Dropped (any NA):     "}\NormalTok{, }\FunctionTok{nrow}\NormalTok{(bfi\_items) }\SpecialCharTok{{-}} \FunctionTok{nrow}\NormalTok{(bfi\_complete), }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Dropped (any NA):      364
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Loss rate:            "}\NormalTok{, }\FunctionTok{round}\NormalTok{((}\FunctionTok{nrow}\NormalTok{(bfi\_items)}\SpecialCharTok{{-}}\FunctionTok{nrow}\NormalTok{(bfi\_complete))}\SpecialCharTok{/}\FunctionTok{nrow}\NormalTok{(bfi\_items)}\SpecialCharTok{*}\DecValTok{100}\NormalTok{,}\DecValTok{1}\NormalTok{), }\StringTok{"\%}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loss rate:             13 %
+\end{verbatim}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Part A: Exploratory Factor
+Analysis}\label{part-a-exploratory-factor-analysis}
+
+\subsection{Step 1 --- Check
+Factorability}\label{step-1-check-factorability}
+
+Before running EFA, check whether the data is suitable. Two standard
+tests:
+
+\textbf{KMO (Kaiser-Meyer-Olkin):} Measures whether the correlation
+patterns are compact enough to yield reliable factors. Values range from
+0 to 1. Interpretation: ≥ .90 = ``Marvelous'', ≥ .80 = ``Meritorious'',
+≥ .70 = ``Middling'', ≥ .60 = ``Mediocre'', \textless{} .50 =
+``Unacceptable --- do not factor analyse.''
+
+\textbf{Bartlett's test of sphericity:} Tests H₀: the correlation matrix
+is an identity matrix (all correlations = 0). A significant result means
+correlations are present. With large N this is almost always significant
+--- treat it as a minimum sanity check, not a strong criterion.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{kmo\_res }\OtherTok{\textless{}{-}} \FunctionTok{KMO}\NormalTok{(bfi\_complete)}
+
+\FunctionTok{cat}\NormalTok{(}\StringTok{"=== KMO Test ===}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## === KMO Test ===
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Overall MSA:"}\NormalTok{, }\FunctionTok{round}\NormalTok{(kmo\_res}\SpecialCharTok{$}\NormalTok{MSA, }\DecValTok{3}\NormalTok{), }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Overall MSA: 0.849
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Interpretation: "}\NormalTok{,}
+  \FunctionTok{ifelse}\NormalTok{(kmo\_res}\SpecialCharTok{$}\NormalTok{MSA }\SpecialCharTok{\textgreater{}=}\NormalTok{ .}\DecValTok{90}\NormalTok{, }\StringTok{"Marvelous"}\NormalTok{,}
+  \FunctionTok{ifelse}\NormalTok{(kmo\_res}\SpecialCharTok{$}\NormalTok{MSA }\SpecialCharTok{\textgreater{}=}\NormalTok{ .}\DecValTok{80}\NormalTok{, }\StringTok{"Meritorious"}\NormalTok{,}
+  \FunctionTok{ifelse}\NormalTok{(kmo\_res}\SpecialCharTok{$}\NormalTok{MSA }\SpecialCharTok{\textgreater{}=}\NormalTok{ .}\DecValTok{70}\NormalTok{, }\StringTok{"Middling"}\NormalTok{,}
+  \FunctionTok{ifelse}\NormalTok{(kmo\_res}\SpecialCharTok{$}\NormalTok{MSA }\SpecialCharTok{\textgreater{}=}\NormalTok{ .}\DecValTok{60}\NormalTok{, }\StringTok{"Mediocre"}\NormalTok{, }\StringTok{"Unacceptable"}\NormalTok{)))), }\StringTok{"}\SpecialCharTok{\textbackslash{}n\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Interpretation:  Meritorious
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Items with lowest individual KMO (potential weak links)}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Items with lowest individual KMO (flag if \textless{} .50):}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Items with lowest individual KMO (flag if < .50):
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sort}\NormalTok{(}\FunctionTok{round}\NormalTok{(kmo\_res}\SpecialCharTok{$}\NormalTok{MSAi, }\DecValTok{3}\NormalTok{))[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{] }\SpecialCharTok{|\textgreater{}} \FunctionTok{print}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    A1    O5    O4    N1    N2 
+## 0.754 0.762 0.770 0.779 0.780
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Bartlett}
+\NormalTok{bart }\OtherTok{\textless{}{-}} \FunctionTok{cortest.bartlett}\NormalTok{(}\FunctionTok{cor}\NormalTok{(bfi\_complete), }\AttributeTok{n=}\FunctionTok{nrow}\NormalTok{(bfi\_complete))}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{=== Bartlett\textquotesingle{}s Test of Sphericity ===}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## === Bartlett's Test of Sphericity ===
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Chi{-}squared:"}\NormalTok{, }\FunctionTok{round}\NormalTok{(bart}\SpecialCharTok{$}\NormalTok{chisq, }\DecValTok{1}\NormalTok{),}
+    \StringTok{"| df:"}\NormalTok{, bart}\SpecialCharTok{$}\NormalTok{df,}
+    \StringTok{"| p:"}\NormalTok{, }\FunctionTok{format}\NormalTok{(bart}\SpecialCharTok{$}\NormalTok{p.value, }\AttributeTok{scientific=}\ConstantTok{TRUE}\NormalTok{), }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Chi-squared: 18146.1 | df: 300 | p: 0e+00
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Conclusion: Correlation matrix is significantly non{-}identity."}\NormalTok{,}
+    \StringTok{"Proceed with EFA.}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Conclusion: Correlation matrix is significantly non-identity. Proceed with EFA.
+\end{verbatim}
+
+\subsection{Step 2 --- Determine the Number of
+Factors}\label{step-2-determine-the-number-of-factors}
+
+\textbf{Parallel analysis} is the gold standard. It simulates random
+datasets of the same size, extracts eigenvalues, and compares: you
+retain factors whose eigenvalues exceed what you would expect from
+random data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{2024}\NormalTok{)}
+\NormalTok{pa }\OtherTok{\textless{}{-}} \FunctionTok{fa.parallel}\NormalTok{(}
+\NormalTok{  bfi\_complete,}
+  \AttributeTok{fa      =} \StringTok{"fa"}\NormalTok{,        }\CommentTok{\# factor analysis, not PCA}
+  \AttributeTok{fm      =} \StringTok{"minres"}\NormalTok{,    }\CommentTok{\# minimum residual extraction}
+  \AttributeTok{n.iter  =} \DecValTok{500}\NormalTok{,         }\CommentTok{\# number of random simulations}
+  \AttributeTok{main    =} \StringTok{"Parallel Analysis — IPIP Big Five"}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics{module_03_efa_cfa_files/figure-latex/parallel-analysis-1} \end{center}
+
+\begin{verbatim}
+## Parallel analysis suggests that the number of factors =  6  and the number of components =  NA
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{Parallel analysis recommends:"}\NormalTok{, pa}\SpecialCharTok{$}\NormalTok{nfact, }\StringTok{"factors}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Parallel analysis recommends: 6 factors
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{How to read the plot:}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## How to read the plot:
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"  Solid line = your actual eigenvalues}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Solid line = your actual eigenvalues
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"  Dashed line = eigenvalues from random (simulated) data}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Dashed line = eigenvalues from random (simulated) data
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"  Retain factors where solid \textgreater{} dashed (to the left of where lines cross)}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Retain factors where solid > dashed (to the left of where lines cross)
+\end{verbatim}
+
+\textbf{Why not the eigenvalue \textgreater{} 1 rule?} The classic
+Kaiser criterion says retain factors with eigenvalue \textgreater{} 1.
+With 25 items this typically suggests 6--8 factors --- almost always too
+many. The rule has no theoretical basis and is known to over-extract.
+Use parallel analysis instead.
+
+\subsection{Step 3 --- Run EFA}\label{step-3-run-efa}
+
+Key decisions: - \textbf{Extraction method:} We use \texttt{minres}
+(minimum residual) --- it minimises off-diagonal residuals, does not
+assume multivariate normality, and is robust to non-normality. -
+\textbf{Rotation:} We use \texttt{oblimin} (oblique) --- it allows
+factors to correlate, which is realistic for personality traits and most
+social science constructs. If you assume traits are uncorrelated, use
+\texttt{varimax} (orthogonal).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Fit 5{-}factor EFA (expected Big Five solution)}
+\NormalTok{efa5 }\OtherTok{\textless{}{-}} \FunctionTok{fa}\NormalTok{(}
+  \AttributeTok{r         =}\NormalTok{ bfi\_complete,}
+  \AttributeTok{nfactors  =} \DecValTok{5}\NormalTok{,}
+  \AttributeTok{rotate    =} \StringTok{"oblimin"}\NormalTok{,    }\CommentTok{\# oblique: factors can correlate}
+  \AttributeTok{fm        =} \StringTok{"minres"}\NormalTok{,}
+  \AttributeTok{scores    =} \StringTok{"regression"}  \CommentTok{\# compute factor scores for each respondent}
+\NormalTok{)}
+
+\CommentTok{\# Print full output with cut = 0.30 (suppress loadings below |.30| for clarity)}
+\FunctionTok{print}\NormalTok{(efa5, }\AttributeTok{cut =} \FloatTok{0.30}\NormalTok{, }\AttributeTok{sort =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{digits =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Factor Analysis using method =  minres
+## Call: fa(r = bfi_complete, nfactors = 5, rotate = "oblimin", scores = "regression", 
+##     fm = "minres")
+## Standardized loadings (pattern matrix) based upon correlation matrix
+##    item   MR2   MR1   MR3   MR5   MR4   h2   u2 com
+## N1   16  0.83                         0.68 0.32 1.1
+## N2   17  0.78                         0.61 0.39 1.0
+## N3   18  0.70                         0.54 0.46 1.1
+## N5   20  0.48                         0.35 0.65 2.0
+## N4   19  0.47  0.40                   0.51 0.49 2.3
+## E2   12        0.67                   0.55 0.45 1.1
+## E4   14       -0.59                   0.54 0.46 1.5
+## E1   11        0.55                   0.35 0.65 1.2
+## E5   15       -0.42                   0.41 0.59 2.7
+## E3   13       -0.41              0.30 0.44 0.56 2.7
+## C2    7              0.67             0.45 0.55 1.2
+## C4    9             -0.64             0.48 0.52 1.1
+## C3    8              0.57             0.32 0.68 1.1
+## C5   10             -0.56             0.44 0.56 1.4
+## C1    6              0.55             0.35 0.65 1.2
+## A3    3                    0.68       0.54 0.46 1.1
+## A2    2                    0.66       0.46 0.54 1.0
+## A5    5                    0.54       0.47 0.53 1.5
+## A4    4                    0.45       0.30 0.70 1.7
+## A1    1                   -0.44       0.20 0.80 1.9
+## O3   23                          0.62 0.47 0.53 1.2
+## O5   25                         -0.54 0.30 0.70 1.2
+## O1   21                          0.52 0.32 0.68 1.1
+## O2   22                         -0.47 0.27 0.73 1.7
+## O4   24        0.33              0.36 0.25 0.75 2.6
+## 
+##                        MR2  MR1  MR3  MR5  MR4
+## SS loadings           2.58 2.21 2.10 2.07 1.64
+## Proportion Var        0.10 0.09 0.08 0.08 0.07
+## Cumulative Var        0.10 0.19 0.28 0.36 0.42
+## Proportion Explained  0.24 0.21 0.20 0.20 0.15
+## Cumulative Proportion 0.24 0.45 0.65 0.85 1.00
+## 
+##  With factor correlations of 
+##       MR2   MR1   MR3   MR5   MR4
+## MR2  1.00  0.22 -0.19 -0.05  0.00
+## MR1  0.22  1.00 -0.24 -0.33 -0.17
+## MR3 -0.19 -0.24  1.00  0.20  0.20
+## MR5 -0.05 -0.33  0.20  1.00  0.20
+## MR4  0.00 -0.17  0.20  0.20  1.00
+## 
+## Mean item complexity =  1.5
+## Test of the hypothesis that 5 factors are sufficient.
+## 
+## df null model =  300  with the objective function =  7.48 with Chi Square =  18146.07
+## df of  the model are 185  and the objective function was  0.64 
+## 
+## The root mean square of the residuals (RMSR) is  0.03 
+## The df corrected root mean square of the residuals is  0.04 
+## 
+## The harmonic n.obs is  2436 with the empirical chi square  565.95  with prob <  3.1e-40 
+## The total n.obs was  2436  with Likelihood Chi Square =  1538.52  with prob <  8.6e-212 
+## 
+## Tucker Lewis Index of factoring reliability =  0.877
+## RMSEA index =  0.055  and the 90 % confidence intervals are  0.052 0.057
+## BIC =  95.87
+## Fit based upon off diagonal values = 0.98
+## Measures of factor score adequacy             
+##                                                    MR2  MR1  MR3  MR5  MR4
+## Correlation of (regression) scores with factors   0.91 0.82 0.84 0.83 0.82
+## Multiple R square of scores with factors          0.83 0.67 0.71 0.68 0.66
+## Minimum correlation of possible factor scores     0.66 0.34 0.43 0.36 0.33
+\end{verbatim}
+
+\subsection{Reading the Full EFA Output --- Line by
+Line}\label{reading-the-full-efa-output-line-by-line}
+
+The \texttt{psych::fa()} output has several sections. Here is what each
+means:
+
+\begin{table}
+\centering
+\caption{\label{tab:efa-output-guide}Complete Guide to psych::fa() Output Sections}
+\centering
+\begin{tabu} to \linewidth {>{\raggedright}X>{\raggedright}X}
+\hline
+Output Section & What It Means\\
+\hline
+\ttfamily{\textbf{Standardised Loadings (Pattern Matrix)}} & The core output. Each value = how strongly that item loads on that factor after rotation. Focus on values > |.30|.\\
+\hline
+\ttfamily{\textbf{h2 column}} & Communality: proportion of item variance explained by ALL factors combined. If h2 < .30 the item is poorly explained.\\
+\hline
+\ttfamily{\textbf{u2 column}} & Uniqueness = 1 - h2. The proportion of variance in the item NOT explained by any factor.\\
+\hline
+\ttfamily{\textbf{com column}} & Complexity: number of factors the item loads substantially on. Ideal = 1.0 (simple structure). Values > 2 signal cross-loaders.\\
+\hline
+\ttfamily{\textbf{SS loadings row}} & Sum of squared loadings per factor. Larger = more important factor. Computed AFTER rotation.\\
+\hline
+\ttfamily{\textbf{Proportion Var row}} & SS loadings divided by total items. Proportion of total variance this factor explains.\\
+\hline
+\ttfamily{\textbf{Cumulative Var row}} & Running total of Proportion Var across factors. At 5 factors: total explained variance.\\
+\hline
+\ttfamily{\textbf{Proportion Explained row}} & Each factor's proportion of the variance that IS explained (not of total variance).\\
+\hline
+\ttfamily{\textbf{Mean item complexity}} & Average complexity across items. Values near 1 indicate clean simple structure.\\
+\hline
+\ttfamily{\textbf{RMSEA / TLI}} & These are model fit indices for the EFA as a structural model. Interpreted same as CFA.\\
+\hline
+\ttfamily{\textbf{Root mean square of residuals}} & Average absolute residual correlation. Should be < .05 for good fit.\\
+\hline
+\ttfamily{\textbf{Fit based upon off diagonal}} & χ² test on off-diagonal residuals. Significant = model does not perfectly reproduce correlations.\\
+\hline
+\end{tabu}
+\end{table}
+
+\subsection{Interpreting the Loadings}\label{interpreting-the-loadings}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Extract loadings cleanly for annotation}
+\NormalTok{L }\OtherTok{\textless{}{-}} \FunctionTok{unclass}\NormalTok{(efa5}\SpecialCharTok{$}\NormalTok{loadings)}
+
+\CommentTok{\# Show the Agreeableness items as a worked example}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"=== Worked example: Agreeableness items (A1–A5) ===}\SpecialCharTok{\textbackslash{}n\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## === Worked example: Agreeableness items (A1–A5) ===
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Factor loading table for A items:}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Factor loading table for A items:
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{round}\NormalTok{(L[}\FunctionTok{paste0}\NormalTok{(}\StringTok{"A"}\NormalTok{,}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{), ], }\DecValTok{2}\NormalTok{) }\SpecialCharTok{|\textgreater{}} \FunctionTok{print}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      MR2   MR1  MR3   MR5   MR4
+## A1  0.20 -0.18 0.07 -0.44 -0.05
+## A2 -0.02  0.00 0.07  0.66  0.03
+## A3 -0.02 -0.10 0.03  0.68  0.03
+## A4 -0.05 -0.08 0.19  0.45 -0.16
+## A5 -0.12 -0.23 0.00  0.54  0.05
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{h2 (communality) for A items:}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## h2 (communality) for A items:
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{round}\NormalTok{(efa5}\SpecialCharTok{$}\NormalTok{communality[}\FunctionTok{paste0}\NormalTok{(}\StringTok{"A"}\NormalTok{,}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{)], }\DecValTok{2}\NormalTok{) }\SpecialCharTok{|\textgreater{}} \FunctionTok{print}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   A1   A2   A3   A4   A5 
+## 0.20 0.46 0.54 0.30 0.47
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{u2 (uniqueness) for A items:}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## u2 (uniqueness) for A items:
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{round}\NormalTok{(efa5}\SpecialCharTok{$}\NormalTok{uniquenesses[}\FunctionTok{paste0}\NormalTok{(}\StringTok{"A"}\NormalTok{,}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{)], }\DecValTok{2}\NormalTok{) }\SpecialCharTok{|\textgreater{}} \FunctionTok{print}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   A1   A2   A3   A4   A5 
+## 0.80 0.54 0.46 0.70 0.53
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{What this means:}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## What this means:
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"  A1 loads .XX on its factor — this is the \textquotesingle{}primary loading\textquotesingle{}.}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   A1 loads .XX on its factor — this is the 'primary loading'.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"  h2 = .XX means the factors explain XX\% of A1\textquotesingle{}s total variance.}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   h2 = .XX means the factors explain XX% of A1's total variance.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"  u2 = .XX means XX\% of A1\textquotesingle{}s variance is item{-}specific (measurement error + unique content).}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   u2 = .XX means XX% of A1's variance is item-specific (measurement error + unique content).
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"  If A1 has h2 \textless{} .30, consider removing it from the scale.}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   If A1 has h2 < .30, consider removing it from the scale.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# In oblique rotation, factors are allowed to correlate}
+\CommentTok{\# The factor correlation matrix tells you HOW correlated they are}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"=== Factor Correlation Matrix (Phi) ===}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## === Factor Correlation Matrix (Phi) ===
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"(Only available with oblique rotation — orthogonal rotation forces these to 0)}\SpecialCharTok{\textbackslash{}n\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## (Only available with oblique rotation — orthogonal rotation forces these to 0)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{round}\NormalTok{(efa5}\SpecialCharTok{$}\NormalTok{Phi, }\DecValTok{3}\NormalTok{) }\SpecialCharTok{|\textgreater{}} \FunctionTok{print}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        MR2    MR1    MR3    MR5    MR4
+## MR2  1.000  0.217 -0.191 -0.046 -0.001
+## MR1  0.217  1.000 -0.237 -0.330 -0.166
+## MR3 -0.191 -0.237  1.000  0.202  0.198
+## MR5 -0.046 -0.330  0.202  1.000  0.196
+## MR4 -0.001 -0.166  0.198  0.196  1.000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{Interpretation:}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Interpretation:
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"  Values near 0: factors are nearly orthogonal (empirically independent)}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Values near 0: factors are nearly orthogonal (empirically independent)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"  Values \textgreater{} |.30|: factors are meaningfully correlated (use oblique, not orthogonal)}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Values > |.30|: factors are meaningfully correlated (use oblique, not orthogonal)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"  Values \textgreater{} |.70|: factors may be too similar — consider merging them}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Values > |.70|: factors may be too similar — consider merging them
+\end{verbatim}
+
+\subsection{Visualising the Factor
+Structure}\label{visualising-the-factor-structure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{L\_df }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(L) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{rownames\_to\_column}\NormalTok{(}\StringTok{"Item"}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{Trait =} \FunctionTok{str\_extract}\NormalTok{(Item, }\StringTok{"\^{}[A{-}Z]"}\NormalTok{),}
+    \AttributeTok{Trait =}\NormalTok{ dplyr}\SpecialCharTok{::}\FunctionTok{recode}\NormalTok{(Trait, }\AttributeTok{A=}\StringTok{"Agree."}\NormalTok{, }\AttributeTok{C=}\StringTok{"Consc."}\NormalTok{, }\AttributeTok{E=}\StringTok{"Extra."}\NormalTok{, }\AttributeTok{N=}\StringTok{"Neuro."}\NormalTok{, }\AttributeTok{O=}\StringTok{"Open."}\NormalTok{)}
+\NormalTok{  ) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{pivot\_longer}\NormalTok{(}\FunctionTok{starts\_with}\NormalTok{(}\StringTok{"MR"}\NormalTok{), }\AttributeTok{names\_to=}\StringTok{"Factor"}\NormalTok{, }\AttributeTok{values\_to=}\StringTok{"Loading"}\NormalTok{)}
+
+\CommentTok{\# Map factor names based on which items load highest}
+\NormalTok{factor\_labels }\OtherTok{\textless{}{-}}\NormalTok{ L\_df }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{group\_by}\NormalTok{(Factor) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{slice\_max}\NormalTok{(}\FunctionTok{abs}\NormalTok{(Loading), }\AttributeTok{n=}\DecValTok{3}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{top\_trait =} \FunctionTok{names}\NormalTok{(}\FunctionTok{which.max}\NormalTok{(}\FunctionTok{table}\NormalTok{(}\FunctionTok{str\_extract}\NormalTok{(Item,}\StringTok{"\^{}[A{-}Z]"}\NormalTok{)))),}
+            \AttributeTok{.groups=}\StringTok{"drop"}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Label =}\NormalTok{ dplyr}\SpecialCharTok{::}\FunctionTok{recode}\NormalTok{(top\_trait,}
+    \AttributeTok{A=}\StringTok{"F: Agreeableness"}\NormalTok{, }\AttributeTok{C=}\StringTok{"F: Conscientiousness"}\NormalTok{,}
+    \AttributeTok{E=}\StringTok{"F: Extraversion"}\NormalTok{,  }\AttributeTok{N=}\StringTok{"F: Neuroticism"}\NormalTok{, }\AttributeTok{O=}\StringTok{"F: Openness"}\NormalTok{))}
+
+\NormalTok{L\_df }\OtherTok{\textless{}{-}}\NormalTok{ L\_df }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{left\_join}\NormalTok{(factor\_labels, }\AttributeTok{by=}\StringTok{"Factor"}\NormalTok{)}
+
+\FunctionTok{ggplot}\NormalTok{(L\_df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{Label, }\AttributeTok{y=}\FunctionTok{fct\_rev}\NormalTok{(Item), }\AttributeTok{fill=}\NormalTok{Loading)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_tile}\NormalTok{(}\AttributeTok{colour=}\StringTok{"white"}\NormalTok{, }\AttributeTok{linewidth=}\FloatTok{0.4}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{label=}\FunctionTok{ifelse}\NormalTok{(}\FunctionTok{abs}\NormalTok{(Loading) }\SpecialCharTok{\textgreater{}=} \FloatTok{0.25}\NormalTok{, }\FunctionTok{round}\NormalTok{(Loading,}\DecValTok{2}\NormalTok{), }\StringTok{""}\NormalTok{),}
+                \AttributeTok{colour=}\FunctionTok{abs}\NormalTok{(Loading) }\SpecialCharTok{\textgreater{}} \FloatTok{0.4}\NormalTok{),}
+            \AttributeTok{size=}\FloatTok{2.9}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_gradient2}\NormalTok{(}\AttributeTok{low=}\StringTok{"\#C0392B"}\NormalTok{, }\AttributeTok{mid=}\StringTok{"white"}\NormalTok{, }\AttributeTok{high=}\StringTok{"\#2C6FAC"}\NormalTok{,}
+                       \AttributeTok{midpoint=}\DecValTok{0}\NormalTok{, }\AttributeTok{limits=}\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{), }\AttributeTok{name=}\StringTok{"Loading"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_colour\_manual}\NormalTok{(}\AttributeTok{values=}\FunctionTok{c}\NormalTok{(}\StringTok{"FALSE"}\OtherTok{=}\StringTok{"grey40"}\NormalTok{,}\StringTok{"TRUE"}\OtherTok{=}\StringTok{"white"}\NormalTok{), }\AttributeTok{guide=}\StringTok{"none"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{facet\_grid}\NormalTok{(Trait}\SpecialCharTok{\textasciitilde{}}\NormalTok{., }\AttributeTok{scales=}\StringTok{"free\_y"}\NormalTok{, }\AttributeTok{space=}\StringTok{"free\_y"}\NormalTok{, }\AttributeTok{switch=}\StringTok{"y"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{title    =} \StringTok{"EFA Factor Loading Matrix (Oblimin rotation, 5 factors)"}\NormalTok{,}
+    \AttributeTok{subtitle =} \FunctionTok{paste}\NormalTok{(}\StringTok{"Loadings ≥ |.25| shown. Strong primary loadings appear as dark blue/red blocks."}\NormalTok{,}
+                     \StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{Off{-}diagonal colours = cross{-}loadings (problematic if \textgreater{} |.30|)."}\NormalTok{),}
+    \AttributeTok{x=}\StringTok{"Factor"}\NormalTok{, }\AttributeTok{y=}\ConstantTok{NULL}\NormalTok{,}
+    \AttributeTok{caption  =} \FunctionTok{paste}\NormalTok{(}\StringTok{"Source: psych::bfi dataset. N ="}\NormalTok{, }\FunctionTok{nrow}\NormalTok{(bfi\_complete), }\StringTok{"."}\NormalTok{)}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x=}\FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle=}\DecValTok{30}\NormalTok{, }\AttributeTok{hjust=}\DecValTok{1}\NormalTok{),}
+        \AttributeTok{strip.text.y.left=}\FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle=}\DecValTok{0}\NormalTok{, }\AttributeTok{hjust=}\DecValTok{1}\NormalTok{, }\AttributeTok{face=}\StringTok{"bold"}\NormalTok{),}
+        \AttributeTok{strip.placement=}\StringTok{"outside"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics{module_03_efa_cfa_files/figure-latex/efa-heatmap-1} \end{center}
+
+\textbf{Reading the heatmap:} Each row is an item; each column is a
+factor. Dark blue in a cell = strong positive loading. Dark red = strong
+negative loading. White = near-zero loading. A clean five-factor
+solution shows five ``hot spots'' on the diagonal --- each block of
+items (A1--A5, C1--C5, etc.) loads strongly on one factor and weakly on
+all others. Cross-loadings (substantial colours off the diagonal)
+indicate items that do not fit cleanly into the proposed structure.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Part B: Confirmatory Factor
+Analysis}\label{part-b-confirmatory-factor-analysis}
+
+\subsection{Moving from EFA to CFA}\label{moving-from-efa-to-cfa}
+
+EFA discovers factor structure from data. CFA tests a
+\emph{theoretically specified} factor structure. In CFA you explicitly
+declare:
+
+\begin{itemize}
+\tightlist
+\item
+  Which items load on which factors (all other loadings are fixed to
+  zero)
+\item
+  Whether factors are allowed to correlate (usually yes --- lavaan does
+  this by default)
+\item
+  Which residuals are allowed to correlate (usually none, unless
+  theoretically justified)
+\end{itemize}
+
+This is far more constrained than EFA, so CFA will almost always fit the
+data less well than EFA. That is the point: CFA tests whether a specific
+theory-driven structure is adequate, not whether it is the best possible
+fitting structure.
+
+\textbf{Important rule:} Use EFA on one half of your data; CFA on the
+other half. Using EFA to discover a structure and CFA to ``confirm'' it
+on the \emph{same data} is circular --- you are confirming what the data
+already told you.
+
+\subsection{Specifying the CFA Model}\label{specifying-the-cfa-model}
+
+lavaan syntax uses \texttt{=\textasciitilde{}} (is measured by) to
+define latent variables:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{big5\_model }\OtherTok{\textless{}{-}} \StringTok{\textquotesingle{}}
+\StringTok{  \# MEASUREMENT MODEL}
+\StringTok{  \# Each line: LatentVariable =\textasciitilde{} item1 + item2 + item3 ...}
+\StringTok{  \# lavaan will estimate one loading per item.}
+\StringTok{  \# The first item in each line gets its loading fixed to 1.0 for scaling}
+\StringTok{  \# (unless you set std.lv = TRUE, which fixes the factor variance to 1 instead)}
+
+\StringTok{  Agreeableness     =\textasciitilde{} A1 + A2 + A3 + A4 + A5}
+\StringTok{  Conscientiousness =\textasciitilde{} C1 + C2 + C3 + C4 + C5}
+\StringTok{  Extraversion      =\textasciitilde{} E1 + E2 + E3 + E4 + E5}
+\StringTok{  Neuroticism       =\textasciitilde{} N1 + N2 + N3 + N4 + N5}
+\StringTok{  Openness          =\textasciitilde{} O1 + O2 + O3 + O4 + O5}
+
+\StringTok{  \# By default lavaan estimates ALL pairwise factor covariances.}
+\StringTok{  \# You will see these in the output as: Agreeableness \textasciitilde{}\textasciitilde{} Conscientiousness etc.}
+\StringTok{  \# To constrain two specific factors to be uncorrelated, add:}
+\StringTok{  \# Agreeableness \textasciitilde{}\textasciitilde{} 0*Conscientiousness}
+\StringTok{\textquotesingle{}}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Model specified. Contains:}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Model specified. Contains:
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"  5 latent variables}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   5 latent variables
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"  25 observed items (5 per factor)}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   25 observed items (5 per factor)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"  5×4/2 = 10 estimated factor covariances}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   5×4/2 = 10 estimated factor covariances
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"  25 residual variances}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   25 residual variances
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"  20 estimated loadings (5 factors × 5 items − 5 fixed for scaling)}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   20 estimated loadings (5 factors × 5 items − 5 fixed for scaling)
+\end{verbatim}
+
+\subsection{Fitting the CFA}\label{fitting-the-cfa}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cfa\_fit }\OtherTok{\textless{}{-}} \FunctionTok{cfa}\NormalTok{(}
+  \AttributeTok{model     =}\NormalTok{ big5\_model,}
+  \AttributeTok{data      =}\NormalTok{ bfi\_complete,}
+  \AttributeTok{estimator =} \StringTok{"MLR"}\NormalTok{,    }\CommentTok{\# Maximum Likelihood with Robust standard errors}
+                        \CommentTok{\# MLR is preferred over ML when data is non{-}normal}
+  \AttributeTok{std.lv    =} \ConstantTok{TRUE}      \CommentTok{\# Fix latent variance to 1 so ALL loadings are estimated}
+                        \CommentTok{\# (not just 4 of the 5 per factor)}
+\NormalTok{)}
+
+\CommentTok{\# The full summary — always start here}
+\FunctionTok{summary}\NormalTok{(cfa\_fit, }\AttributeTok{fit.measures=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{standardized=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{ci=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## lavaan 0.6-21 ended normally after 23 iterations
+## 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of model parameters                        60
+## 
+##   Number of observations                          2436
+## 
+## Model Test User Model:
+##                                               Standard      Scaled
+##   Test Statistic                              4165.467    3612.178
+##   Degrees of freedom                               265         265
+##   P-value (Chi-square)                           0.000       0.000
+##   Scaling correction factor                                  1.153
+##     Yuan-Bentler correction (Mplus variant)                       
+## 
+## Model Test Baseline Model:
+## 
+##   Test statistic                             18222.116   15289.285
+##   Degrees of freedom                               300         300
+##   P-value                                        0.000       0.000
+##   Scaling correction factor                                  1.192
+## 
+## User Model versus Baseline Model:
+## 
+##   Comparative Fit Index (CFI)                    0.782       0.777
+##   Tucker-Lewis Index (TLI)                       0.754       0.747
+##                                                                   
+##   Robust Comparative Fit Index (CFI)                         0.784
+##   Robust Tucker-Lewis Index (TLI)                            0.755
+## 
+## Loglikelihood and Information Criteria:
+## 
+##   Loglikelihood user model (H0)             -99840.238  -99840.238
+##   Scaling correction factor                                  1.216
+##       for the MLR correction                                      
+##   Loglikelihood unrestricted model (H1)     -97757.504  -97757.504
+##   Scaling correction factor                                  1.165
+##       for the MLR correction                                      
+##                                                                   
+##   Akaike (AIC)                              199800.476  199800.476
+##   Bayesian (BIC)                            200148.363  200148.363
+##   Sample-size adjusted Bayesian (SABIC)     199957.729  199957.729
+## 
+## Root Mean Square Error of Approximation:
+## 
+##   RMSEA                                          0.078       0.072
+##   90 Percent confidence interval - lower         0.076       0.070
+##   90 Percent confidence interval - upper         0.080       0.074
+##   P-value H_0: RMSEA <= 0.050                    0.000       0.000
+##   P-value H_0: RMSEA >= 0.080                    0.037       0.000
+##                                                                   
+##   Robust RMSEA                                               0.077
+##   90 Percent confidence interval - lower                     0.075
+##   90 Percent confidence interval - upper                     0.080
+##   P-value H_0: Robust RMSEA <= 0.050                         0.000
+##   P-value H_0: Robust RMSEA >= 0.080                         0.025
+## 
+## Standardized Root Mean Square Residual:
+## 
+##   SRMR                                           0.075       0.075
+## 
+## Parameter Estimates:
+## 
+##   Standard errors                             Sandwich
+##   Information bread                           Observed
+##   Observed information based on                Hessian
+## 
+## Latent Variables:
+##                        Estimate  Std.Err  z-value  P(>|z|) ci.lower ci.upper
+##   Agreeableness =~                                                          
+##     A1                    0.484    0.035   13.947    0.000    0.416    0.552
+##     A2                   -0.764    0.028  -27.062    0.000   -0.820   -0.709
+##     A3                   -0.983    0.029  -34.326    0.000   -1.039   -0.926
+##     A4                   -0.757    0.033  -22.614    0.000   -0.823   -0.692
+##     A5                   -0.873    0.028  -31.503    0.000   -0.928   -0.819
+##   Conscientiousness =~                                                      
+##     C1                    0.680    0.034   20.030    0.000    0.614    0.747
+##     C2                    0.781    0.035   22.326    0.000    0.712    0.849
+##     C3                    0.705    0.030   23.655    0.000    0.646    0.763
+##     C4                   -0.967    0.030  -32.184    0.000   -1.026   -0.908
+##     C5                   -1.013    0.036  -28.006    0.000   -1.083   -0.942
+##   Extraversion =~                                                           
+##     E1                    0.920    0.035   26.422    0.000    0.852    0.988
+##     E2                    1.128    0.031   36.139    0.000    1.066    1.189
+##     E3                   -0.847    0.030  -27.791    0.000   -0.907   -0.788
+##     E4                   -1.031    0.030  -33.850    0.000   -1.091   -0.972
+##     E5                   -0.743    0.032  -23.492    0.000   -0.805   -0.681
+##   Neuroticism =~                                                            
+##     N1                    1.300    0.027   49.035    0.000    1.248    1.352
+##     N2                    1.230    0.026   46.599    0.000    1.179    1.282
+##     N3                    1.149    0.029   40.118    0.000    1.093    1.205
+##     N4                    0.899    0.036   25.092    0.000    0.829    0.969
+##     N5                    0.816    0.036   22.715    0.000    0.746    0.886
+##   Openness =~                                                               
+##     O1                    0.635    0.029   22.146    0.000    0.579    0.692
+##     O2                   -0.648    0.046  -14.041    0.000   -0.739   -0.558
+##     O3                    0.872    0.035   24.798    0.000    0.803    0.941
+##     O4                    0.277    0.033    8.324    0.000    0.212    0.343
+##     O5                   -0.610    0.039  -15.800    0.000   -0.685   -0.534
+##    Std.lv  Std.all
+##                   
+##     0.484    0.344
+##    -0.764   -0.648
+##    -0.983   -0.749
+##    -0.757   -0.510
+##    -0.873   -0.687
+##                   
+##     0.680    0.551
+##     0.781    0.592
+##     0.705    0.546
+##    -0.967   -0.702
+##    -1.013   -0.620
+##                   
+##     0.920    0.564
+##     1.128    0.699
+##    -0.847   -0.627
+##    -1.031   -0.703
+##    -0.743   -0.553
+##                   
+##     1.300    0.825
+##     1.230    0.803
+##     1.149    0.721
+##     0.899    0.573
+##     0.816    0.503
+##                   
+##     0.635    0.564
+##    -0.648   -0.418
+##     0.872    0.724
+##     0.277    0.233
+##    -0.610   -0.461
+## 
+## Covariances:
+##                        Estimate  Std.Err  z-value  P(>|z|) ci.lower ci.upper
+##   Agreeableness ~~                                                          
+##     Conscientisnss       -0.334    0.029  -11.446    0.000   -0.391   -0.277
+##     Extraversion          0.683    0.022   31.135    0.000    0.640    0.726
+##     Neuroticism           0.223    0.027    8.221    0.000    0.170    0.277
+##     Openness             -0.303    0.033   -9.174    0.000   -0.368   -0.239
+##   Conscientiousness ~~                                                      
+##     Extraversion         -0.357    0.029  -12.341    0.000   -0.414   -0.301
+##     Neuroticism          -0.283    0.030   -9.543    0.000   -0.341   -0.225
+##     Openness              0.301    0.032    9.406    0.000    0.238    0.364
+##   Extraversion ~~                                                           
+##     Neuroticism           0.244    0.028    8.662    0.000    0.189    0.299
+##     Openness             -0.453    0.035  -13.000    0.000   -0.521   -0.385
+##   Neuroticism ~~                                                            
+##     Openness             -0.112    0.030   -3.685    0.000   -0.172   -0.052
+##    Std.lv  Std.all
+##                   
+##    -0.334   -0.334
+##     0.683    0.683
+##     0.223    0.223
+##    -0.303   -0.303
+##                   
+##    -0.357   -0.357
+##    -0.283   -0.283
+##     0.301    0.301
+##                   
+##     0.244    0.244
+##    -0.453   -0.453
+##                   
+##    -0.112   -0.112
+## 
+## Variances:
+##                    Estimate  Std.Err  z-value  P(>|z|) ci.lower ci.upper
+##    .A1                1.745    0.058   29.920    0.000    1.631    1.859
+##    .A2                0.807    0.042   19.134    0.000    0.724    0.889
+##    .A3                0.754    0.046   16.464    0.000    0.664    0.843
+##    .A4                1.632    0.060   27.148    0.000    1.514    1.749
+##    .A5                0.852    0.046   18.657    0.000    0.762    0.941
+##    .C1                1.063    0.053   20.092    0.000    0.959    1.166
+##    .C2                1.130    0.052   21.820    0.000    1.028    1.231
+##    .C3                1.170    0.044   26.585    0.000    1.084    1.256
+##    .C4                0.960    0.054   17.824    0.000    0.855    1.066
+##    .C5                1.640    0.069   23.873    0.000    1.505    1.774
+##    .E1                1.814    0.061   29.745    0.000    1.694    1.934
+##    .E2                1.332    0.062   21.647    0.000    1.211    1.453
+##    .E3                1.108    0.046   23.844    0.000    1.017    1.199
+##    .E4                1.088    0.051   21.169    0.000    0.987    1.188
+##    .E5                1.251    0.047   26.587    0.000    1.159    1.344
+##    .N1                0.793    0.050   15.831    0.000    0.695    0.891
+##    .N2                0.836    0.049   17.060    0.000    0.740    0.932
+##    .N3                1.222    0.053   23.117    0.000    1.119    1.326
+##    .N4                1.654    0.060   27.546    0.000    1.537    1.772
+##    .N5                1.969    0.061   32.245    0.000    1.849    2.088
+##    .O1                0.865    0.038   22.625    0.000    0.790    0.940
+##    .O2                1.990    0.072   27.796    0.000    1.850    2.131
+##    .O3                0.691    0.053   13.126    0.000    0.588    0.794
+##    .O4                1.346    0.054   25.153    0.000    1.241    1.451
+##    .O5                1.380    0.060   22.984    0.000    1.263    1.498
+##     Agreeableness     1.000                               1.000    1.000
+##     Conscientisnss    1.000                               1.000    1.000
+##     Extraversion      1.000                               1.000    1.000
+##     Neuroticism       1.000                               1.000    1.000
+##     Openness          1.000                               1.000    1.000
+##    Std.lv  Std.all
+##     1.745    0.882
+##     0.807    0.580
+##     0.754    0.438
+##     1.632    0.740
+##     0.852    0.528
+##     1.063    0.697
+##     1.130    0.650
+##     1.170    0.702
+##     0.960    0.507
+##     1.640    0.615
+##     1.814    0.682
+##     1.332    0.512
+##     1.108    0.607
+##     1.088    0.506
+##     1.251    0.694
+##     0.793    0.320
+##     0.836    0.356
+##     1.222    0.481
+##     1.654    0.672
+##     1.969    0.747
+##     0.865    0.682
+##     1.990    0.826
+##     0.691    0.476
+##     1.346    0.946
+##     1.380    0.788
+##     1.000    1.000
+##     1.000    1.000
+##     1.000    1.000
+##     1.000    1.000
+##     1.000    1.000
+\end{verbatim}
+
+\subsection{Reading the lavaan Output --- Complete Section-by-Section
+Guide}\label{reading-the-lavaan-output-complete-section-by-section-guide}
+
+The \texttt{summary()} output is long and contains many sections. Here
+is what each one means and how to read it:
+
+\begin{table}
+\centering
+\caption{\label{tab:lavaan-output-guide}Complete Section-by-Section Guide to lavaan CFA Output}
+\centering
+\begin{tabu} to \linewidth {>{\raggedright}X>{\raggedright}X}
+\hline
+Section & What It Means\\
+\hline
+\ttfamily{\textbf{lavaan version + Number of observations}} & Confirms the sample size. Always verify this matches your expected N after listwise deletion.\\
+\hline
+\ttfamily{\textbf{Estimator}} & MLR = Maximum Likelihood with robust SEs. Use MLR for non-normal data (ordinal items). Use ML for multivariate normal data.\\
+\hline
+\ttfamily{\textbf{Optimization method}} & NLMINB is the default optimizer. You do not need to change this.\\
+\hline
+\ttfamily{\textbf{Number of model parameters}} & The number of free parameters estimated. More parameters = more complex model.\\
+\hline
+\ttfamily{\textbf{Model Test User Model}} & The overall model chi-squared test\\
+\hline
+\ttfamily{\textbf{Test statistic (χ²)}} & How different the model-implied covariance matrix is from the observed one. Scaled by N. Almost always significant with large samples.\\
+\hline
+\ttfamily{\textbf{Degrees of freedom}} & Degrees of freedom = (p*(p+1)/2) − free parameters, where p = number of items. More df = more constrained model.\\
+\hline
+\ttfamily{\textbf{P-value}} & With N > 500, this is almost always < .05 even for good models. Focus on fit indices instead.\\
+\hline
+\ttfamily{\textbf{Model Test Baseline Model}} & The null model assumes all items are uncorrelated. CFI and TLI are computed relative to this null.\\
+\hline
+\ttfamily{\textbf{User Model vs. Baseline Model (CFI, TLI)}} & CFI: proportion of covariance explained vs. null. TLI: similar but penalises complexity. Both should be ≥ .95 for good fit.\\
+\hline
+\ttfamily{\textbf{Root Mean Square Error (RMSEA + CI)}} & RMSEA: average discrepancy per df. ≤ .06 = good, ≤ .08 = acceptable. The 90\% CI should not include values > .10.\\
+\hline
+\ttfamily{\textbf{Standardized Root Mean Square Residual (SRMR)}} & Average absolute difference between model-implied and observed correlations. ≤ .08 = good fit.\\
+\hline
+\ttfamily{\textbf{Parameter Estimates: Latent Variables (=\textasciitilde{})}} & This is the core output: estimated factor loadings\\
+\hline
+\ttfamily{\textbf{Estimate column}} & The unstandardised loading in the metric of the item (raw score units). Interpretation depends on scale.\\
+\hline
+\ttfamily{\textbf{Std.Err column}} & Standard error of the estimate. Smaller = more precise.\\
+\hline
+\ttfamily{\textbf{z-value column}} & Estimate / Std.Err. Used to compute p-value. |z| > 1.96 = p < .05.\\
+\hline
+\ttfamily{\textbf{P(>|z|) column}} & Two-tailed p-value testing H₀: this parameter = 0. Almost all loadings will be significant in a correctly specified model.\\
+\hline
+\ttfamily{\textbf{ci.lower / ci.upper columns}} & 95\% confidence interval. Does it include zero? If yes, the loading is not significant.\\
+\hline
+\ttfamily{\textbf{Std.lv column}} & Loading standardised with respect to latent variable variance only. Useful if std.lv=FALSE.\\
+\hline
+\ttfamily{\textbf{Std.all column}} & FULLY STANDARDISED LOADING: this is what you report in papers. Correlation between item and factor. Range: −1 to +1. > |.40| = acceptable; > |.60| = good; > |.80| = excellent.\\
+\hline
+\ttfamily{\textbf{Parameter Estimates: Covariances (\textasciitilde{}\textasciitilde{})}} & Factor covariances (or correlations if std.lv=TRUE). A covariance of .35 between Agreeableness and Conscientiousness means people high in one tend to be high in the other.\\
+\hline
+\ttfamily{\textbf{Parameter Estimates: Variances}} & Residual variance estimates for each item and each latent variable\\
+\hline
+\ttfamily{\textbf{Residual variances (for observed items)}} & Residual (unique) variance for each item — the portion NOT explained by its factor. 1 − Std.all² = residual proportion.\\
+\hline
+\ttfamily{\textbf{Variance of latent variables}} & If std.lv=TRUE, latent variances are fixed to 1.0 and will not appear as free parameters.\\
+\hline
+\end{tabu}
+\end{table}
+
+\subsection{Extracting and Displaying the Key
+Results}\label{extracting-and-displaying-the-key-results}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Extract standardised loadings for clean reporting}
+\NormalTok{loadings\_tbl }\OtherTok{\textless{}{-}} \FunctionTok{parameterEstimates}\NormalTok{(cfa\_fit, }\AttributeTok{standardized=}\ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{filter}\NormalTok{(op }\SpecialCharTok{==} \StringTok{"=\textasciitilde{}"}\NormalTok{) }\SpecialCharTok{|\textgreater{}}      \CommentTok{\# keep only factor loading parameters}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{select}\NormalTok{(lhs, rhs, std.all, se, pvalue, ci.lower, ci.upper) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{std.all  =} \FunctionTok{round}\NormalTok{(std.all, }\DecValTok{3}\NormalTok{),}
+    \AttributeTok{se       =} \FunctionTok{round}\NormalTok{(se, }\DecValTok{3}\NormalTok{),}
+    \AttributeTok{pvalue   =} \FunctionTok{ifelse}\NormalTok{(pvalue }\SpecialCharTok{\textless{}}\NormalTok{ .}\DecValTok{001}\NormalTok{, }\StringTok{"\textless{} .001"}\NormalTok{, }\FunctionTok{round}\NormalTok{(pvalue, }\DecValTok{3}\NormalTok{)),}
+    \AttributeTok{ci.lower =} \FunctionTok{round}\NormalTok{(ci.lower, }\DecValTok{3}\NormalTok{),}
+    \AttributeTok{ci.upper =} \FunctionTok{round}\NormalTok{(ci.upper, }\DecValTok{3}\NormalTok{),}
+    \CommentTok{\# Communality from standardised loading: h2 = lambda\^{}2}
+    \AttributeTok{h2       =} \FunctionTok{round}\NormalTok{(std.all}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{),}
+    \AttributeTok{Quality  =} \FunctionTok{case\_when}\NormalTok{(}
+      \FunctionTok{abs}\NormalTok{(std.all) }\SpecialCharTok{\textgreater{}=} \FloatTok{0.70} \SpecialCharTok{\textasciitilde{}} \StringTok{"Strong"}\NormalTok{,}
+      \FunctionTok{abs}\NormalTok{(std.all) }\SpecialCharTok{\textgreater{}=} \FloatTok{0.50} \SpecialCharTok{\textasciitilde{}} \StringTok{"Acceptable"}\NormalTok{,}
+      \FunctionTok{abs}\NormalTok{(std.all) }\SpecialCharTok{\textgreater{}=} \FloatTok{0.30} \SpecialCharTok{\textasciitilde{}} \StringTok{"Marginal"}\NormalTok{,}
+      \ConstantTok{TRUE}                 \SpecialCharTok{\textasciitilde{}} \StringTok{"Weak — review"}
+\NormalTok{    )}
+\NormalTok{  ) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{rename}\NormalTok{(}\AttributeTok{Factor=}\NormalTok{lhs, }\AttributeTok{Item=}\NormalTok{rhs, }\StringTok{\textasciigrave{}}\AttributeTok{λ (std.)}\StringTok{\textasciigrave{}}\OtherTok{=}\NormalTok{std.all, }\AttributeTok{SE=}\NormalTok{se, }\AttributeTok{p=}\NormalTok{pvalue,}
+         \StringTok{\textasciigrave{}}\AttributeTok{CI low}\StringTok{\textasciigrave{}}\OtherTok{=}\NormalTok{ci.lower, }\StringTok{\textasciigrave{}}\AttributeTok{CI high}\StringTok{\textasciigrave{}}\OtherTok{=}\NormalTok{ci.upper, }\StringTok{\textasciigrave{}}\AttributeTok{h²}\StringTok{\textasciigrave{}}\OtherTok{=}\NormalTok{h2)}
+
+\FunctionTok{kbl}\NormalTok{(loadings\_tbl,}
+    \AttributeTok{caption=}\StringTok{"CFA Standardised Factor Loadings — Big Five Model"}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{bootstrap\_options=}\FunctionTok{c}\NormalTok{(}\StringTok{"striped"}\NormalTok{,}\StringTok{"hover"}\NormalTok{,}\StringTok{"condensed"}\NormalTok{)) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{group\_rows}\NormalTok{(}\StringTok{"Agreeableness"}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{group\_rows}\NormalTok{(}\StringTok{"Conscientiousness"}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{10}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{group\_rows}\NormalTok{(}\StringTok{"Extraversion"}\NormalTok{, }\DecValTok{11}\NormalTok{, }\DecValTok{15}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{group\_rows}\NormalTok{(}\StringTok{"Neuroticism"}\NormalTok{, }\DecValTok{16}\NormalTok{, }\DecValTok{20}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{group\_rows}\NormalTok{(}\StringTok{"Openness"}\NormalTok{, }\DecValTok{21}\NormalTok{, }\DecValTok{25}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{column\_spec}\NormalTok{(}\DecValTok{8}\NormalTok{, }\AttributeTok{color=}\FunctionTok{ifelse}\NormalTok{(loadings\_tbl}\SpecialCharTok{$}\NormalTok{Quality }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"Weak — review"}\NormalTok{,}\StringTok{"Marginal"}\NormalTok{),}
+                               \StringTok{"\#C0392B"}\NormalTok{,}\StringTok{"\#27AE60"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}
+\centering
+\caption{\label{tab:cfa-loadings-clean}CFA Standardised Factor Loadings — Big Five Model}
+\centering
+\begin{tabular}[t]{l|l|r|r|l|r|r|>{}r|l}
+\hline
+Factor & Item & λ (std.) & SE & p & CI low & CI high & h² & Quality\\
+\hline
+\multicolumn{9}{l}{\textbf{Agreeableness}}\\
+\hline
+\hspace{1em}Agreeableness & A1 & 0.344 & 0.035 & < .001 & 0.416 & 0.552 & \textcolor[HTML]{C0392B}{0.118} & Marginal\\
+\hline
+\hspace{1em}Agreeableness & A2 & -0.648 & 0.028 & < .001 & -0.820 & -0.709 & \textcolor[HTML]{27AE60}{0.420} & Acceptable\\
+\hline
+\hspace{1em}Agreeableness & A3 & -0.749 & 0.029 & < .001 & -1.039 & -0.926 & \textcolor[HTML]{27AE60}{0.561} & Strong\\
+\hline
+\hspace{1em}Agreeableness & A4 & -0.510 & 0.033 & < .001 & -0.823 & -0.692 & \textcolor[HTML]{27AE60}{0.260} & Acceptable\\
+\hline
+\hspace{1em}Agreeableness & A5 & -0.687 & 0.028 & < .001 & -0.928 & -0.819 & \textcolor[HTML]{27AE60}{0.472} & Acceptable\\
+\hline
+\multicolumn{9}{l}{\textbf{Conscientiousness}}\\
+\hline
+\hspace{1em}Conscientiousness & C1 & 0.551 & 0.034 & < .001 & 0.614 & 0.747 & \textcolor[HTML]{27AE60}{0.304} & Acceptable\\
+\hline
+\hspace{1em}Conscientiousness & C2 & 0.592 & 0.035 & < .001 & 0.712 & 0.849 & \textcolor[HTML]{27AE60}{0.350} & Acceptable\\
+\hline
+\hspace{1em}Conscientiousness & C3 & 0.546 & 0.030 & < .001 & 0.646 & 0.763 & \textcolor[HTML]{27AE60}{0.298} & Acceptable\\
+\hline
+\hspace{1em}Conscientiousness & C4 & -0.702 & 0.030 & < .001 & -1.026 & -0.908 & \textcolor[HTML]{27AE60}{0.493} & Strong\\
+\hline
+\hspace{1em}Conscientiousness & C5 & -0.620 & 0.036 & < .001 & -1.083 & -0.942 & \textcolor[HTML]{27AE60}{0.384} & Acceptable\\
+\hline
+\multicolumn{9}{l}{\textbf{Extraversion}}\\
+\hline
+\hspace{1em}Extraversion & E1 & 0.564 & 0.035 & < .001 & 0.852 & 0.988 & \textcolor[HTML]{27AE60}{0.318} & Acceptable\\
+\hline
+\hspace{1em}Extraversion & E2 & 0.699 & 0.031 & < .001 & 1.066 & 1.189 & \textcolor[HTML]{27AE60}{0.489} & Acceptable\\
+\hline
+\hspace{1em}Extraversion & E3 & -0.627 & 0.030 & < .001 & -0.907 & -0.788 & \textcolor[HTML]{27AE60}{0.393} & Acceptable\\
+\hline
+\hspace{1em}Extraversion & E4 & -0.703 & 0.030 & < .001 & -1.091 & -0.972 & \textcolor[HTML]{27AE60}{0.494} & Strong\\
+\hline
+\hspace{1em}Extraversion & E5 & -0.553 & 0.032 & < .001 & -0.805 & -0.681 & \textcolor[HTML]{27AE60}{0.306} & Acceptable\\
+\hline
+\multicolumn{9}{l}{\textbf{Neuroticism}}\\
+\hline
+\hspace{1em}Neuroticism & N1 & 0.825 & 0.027 & < .001 & 1.248 & 1.352 & \textcolor[HTML]{27AE60}{0.681} & Strong\\
+\hline
+\hspace{1em}Neuroticism & N2 & 0.803 & 0.026 & < .001 & 1.179 & 1.282 & \textcolor[HTML]{27AE60}{0.645} & Strong\\
+\hline
+\hspace{1em}Neuroticism & N3 & 0.721 & 0.029 & < .001 & 1.093 & 1.205 & \textcolor[HTML]{27AE60}{0.520} & Strong\\
+\hline
+\hspace{1em}Neuroticism & N4 & 0.573 & 0.036 & < .001 & 0.829 & 0.969 & \textcolor[HTML]{27AE60}{0.328} & Acceptable\\
+\hline
+\hspace{1em}Neuroticism & N5 & 0.503 & 0.036 & < .001 & 0.746 & 0.886 & \textcolor[HTML]{27AE60}{0.253} & Acceptable\\
+\hline
+\multicolumn{9}{l}{\textbf{Openness}}\\
+\hline
+\hspace{1em}Openness & O1 & 0.564 & 0.029 & < .001 & 0.579 & 0.692 & \textcolor[HTML]{27AE60}{0.318} & Acceptable\\
+\hline
+\hspace{1em}Openness & O2 & -0.418 & 0.046 & < .001 & -0.739 & -0.558 & \textcolor[HTML]{C0392B}{0.175} & Marginal\\
+\hline
+\hspace{1em}Openness & O3 & 0.724 & 0.035 & < .001 & 0.803 & 0.941 & \textcolor[HTML]{27AE60}{0.524} & Strong\\
+\hline
+\hspace{1em}Openness & O4 & 0.233 & 0.033 & < .001 & 0.212 & 0.343 & \textcolor[HTML]{C0392B}{0.054} & Weak — review\\
+\hline
+\hspace{1em}Openness & O5 & -0.461 & 0.039 & < .001 & -0.685 & -0.534 & \textcolor[HTML]{C0392B}{0.213} & Marginal\\
+\hline
+\end{tabular}
+\end{table}
+
+\textbf{Reading this table:}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{λ (std.):} The standardised loading. This is the number you
+  report in your methods section. A loading of .65 means the item
+  correlates .65 with its factor.
+\item
+  \textbf{h²:} Communality = λ². An h² of .42 means 42\% of this item's
+  variance is shared with its factor; 58\% is unique. Items with h²
+  \textless{} .20 are barely measuring the factor.
+\item
+  \textbf{Quality column:} Benchmark guidance. A scale with mostly
+  ``Acceptable'' and ``Strong'' items is well-specified. Several
+  ``Weak'' items suggest the items need revision or the model needs
+  rethinking.
+\item
+  \textbf{p column:} Almost every loading will be significant --- this
+  is just telling you the loading is not zero. The magnitude (λ) and
+  communality (h²) are more informative than the p-value here.
+\end{itemize}
+
+\subsection{Evaluating Model Fit}\label{evaluating-model-fit}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fit\_indices }\OtherTok{\textless{}{-}} \FunctionTok{fitMeasures}\NormalTok{(cfa\_fit,}
+  \FunctionTok{c}\NormalTok{(}\StringTok{"chisq"}\NormalTok{,}\StringTok{"df"}\NormalTok{,}\StringTok{"pvalue"}\NormalTok{,}\StringTok{"cfi"}\NormalTok{,}\StringTok{"tli"}\NormalTok{,}\StringTok{"rmsea"}\NormalTok{,}\StringTok{"rmsea.ci.lower"}\NormalTok{,}
+    \StringTok{"rmsea.ci.upper"}\NormalTok{,}\StringTok{"rmsea.pvalue"}\NormalTok{,}\StringTok{"srmr"}\NormalTok{,}\StringTok{"aic"}\NormalTok{,}\StringTok{"bic"}\NormalTok{)) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{round}\NormalTok{(}\DecValTok{3}\NormalTok{)}
+
+\FunctionTok{tibble}\NormalTok{(}
+  \AttributeTok{Index   =} \FunctionTok{c}\NormalTok{(}\StringTok{"χ² (chi{-}squared)"}\NormalTok{,}\StringTok{"df"}\NormalTok{,}\StringTok{"p(χ²)"}\NormalTok{,}\StringTok{"CFI"}\NormalTok{,}\StringTok{"TLI"}\NormalTok{,}
+               \StringTok{"RMSEA"}\NormalTok{,}\StringTok{"RMSEA 95\% CI lower"}\NormalTok{,}\StringTok{"RMSEA 95\% CI upper"}\NormalTok{,}
+               \StringTok{"p(RMSEA ≤ .05)"}\NormalTok{,}\StringTok{"SRMR"}\NormalTok{,}\StringTok{"AIC"}\NormalTok{,}\StringTok{"BIC"}\NormalTok{),}
+  \AttributeTok{Value   =}\NormalTok{ fit\_indices,}
+  \AttributeTok{Benchmark =} \FunctionTok{c}\NormalTok{(}\StringTok{"—"}\NormalTok{,}\StringTok{"—"}\NormalTok{,}\StringTok{"\textgreater{} .05 for exact fit"}\NormalTok{,}
+                \StringTok{"≥ .95 good, ≥ .90 acceptable"}\NormalTok{,}
+                \StringTok{"≥ .95 good, ≥ .90 acceptable"}\NormalTok{,}
+                \StringTok{"≤ .06 good, ≤ .08 acceptable"}\NormalTok{,}
+                \StringTok{"—"}\NormalTok{,}\StringTok{"—"}\NormalTok{,}\StringTok{"\textgreater{}.05 = close fit"}\NormalTok{,}
+                \StringTok{"≤ .08 good, ≤ .10 acceptable"}\NormalTok{,}
+                \StringTok{"Lower = better"}\NormalTok{,}\StringTok{"Lower = better"}\NormalTok{),}
+  \AttributeTok{Verdict =} \FunctionTok{c}\NormalTok{(}
+    \StringTok{"Ignore significance with N \textgreater{} 300"}\NormalTok{,}
+    \StringTok{"More df = more constrained (parsimonious) model"}\NormalTok{,}
+    \ControlFlowTok{if}\NormalTok{(fit\_indices[}\StringTok{"pvalue"}\NormalTok{] }\SpecialCharTok{\textgreater{}}\NormalTok{ .}\DecValTok{05}\NormalTok{) }\StringTok{"✓ Not significant — exact fit"} \ControlFlowTok{else} \StringTok{"✗ Significant (expected at large N)"}\NormalTok{,}
+    \ControlFlowTok{if}\NormalTok{(fit\_indices[}\StringTok{"cfi"}\NormalTok{] }\SpecialCharTok{\textgreater{}=}\NormalTok{ .}\DecValTok{95}\NormalTok{) }\StringTok{"✓ Good"} \ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{(fit\_indices[}\StringTok{"cfi"}\NormalTok{] }\SpecialCharTok{\textgreater{}=}\NormalTok{ .}\DecValTok{90}\NormalTok{) }\StringTok{"\textasciitilde{} Acceptable"} \ControlFlowTok{else} \StringTok{"✗ Poor"}\NormalTok{,}
+    \ControlFlowTok{if}\NormalTok{(fit\_indices[}\StringTok{"tli"}\NormalTok{] }\SpecialCharTok{\textgreater{}=}\NormalTok{ .}\DecValTok{95}\NormalTok{) }\StringTok{"✓ Good"} \ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{(fit\_indices[}\StringTok{"tli"}\NormalTok{] }\SpecialCharTok{\textgreater{}=}\NormalTok{ .}\DecValTok{90}\NormalTok{) }\StringTok{"\textasciitilde{} Acceptable"} \ControlFlowTok{else} \StringTok{"✗ Poor"}\NormalTok{,}
+    \ControlFlowTok{if}\NormalTok{(fit\_indices[}\StringTok{"rmsea"}\NormalTok{] }\SpecialCharTok{\textless{}=}\NormalTok{ .}\DecValTok{06}\NormalTok{) }\StringTok{"✓ Good"} \ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{(fit\_indices[}\StringTok{"rmsea"}\NormalTok{] }\SpecialCharTok{\textless{}=}\NormalTok{ .}\DecValTok{08}\NormalTok{) }\StringTok{"\textasciitilde{} Acceptable"} \ControlFlowTok{else} \StringTok{"✗ Poor"}\NormalTok{,}
+    \StringTok{"—"}\NormalTok{,}\StringTok{"—"}\NormalTok{,}
+    \ControlFlowTok{if}\NormalTok{(fit\_indices[}\StringTok{"rmsea.pvalue"}\NormalTok{] }\SpecialCharTok{\textgreater{}}\NormalTok{ .}\DecValTok{05}\NormalTok{) }\StringTok{"✓ Close fit confirmed"} \ControlFlowTok{else} \StringTok{"\textasciitilde{} Not close fit"}\NormalTok{,}
+    \ControlFlowTok{if}\NormalTok{(fit\_indices[}\StringTok{"srmr"}\NormalTok{] }\SpecialCharTok{\textless{}=}\NormalTok{ .}\DecValTok{08}\NormalTok{) }\StringTok{"✓ Good"} \ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{(fit\_indices[}\StringTok{"srmr"}\NormalTok{] }\SpecialCharTok{\textless{}=}\NormalTok{ .}\DecValTok{10}\NormalTok{) }\StringTok{"\textasciitilde{} Acceptable"} \ControlFlowTok{else} \StringTok{"✗ Poor"}\NormalTok{,}
+    \StringTok{"Use for model comparison only"}\NormalTok{,}\StringTok{"Use for model comparison only"}
+\NormalTok{  )}
+\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{kbl}\NormalTok{(}\AttributeTok{caption=}\StringTok{"CFA Fit Index Summary — Big Five Model"}\NormalTok{,}
+      \AttributeTok{col.names=}\FunctionTok{c}\NormalTok{(}\StringTok{"Index"}\NormalTok{,}\StringTok{"Value"}\NormalTok{,}\StringTok{"Benchmark"}\NormalTok{,}\StringTok{"Verdict"}\NormalTok{)) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{bootstrap\_options=}\FunctionTok{c}\NormalTok{(}\StringTok{"striped"}\NormalTok{,}\StringTok{"hover"}\NormalTok{)) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{row\_spec}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{,}\DecValTok{5}\NormalTok{), }\AttributeTok{background=}\StringTok{"\#EBF5FB"}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{row\_spec}\NormalTok{(}\DecValTok{6}\NormalTok{, }\AttributeTok{background=}\StringTok{"\#EAFAF1"}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{row\_spec}\NormalTok{(}\DecValTok{10}\NormalTok{, }\AttributeTok{background=}\StringTok{"\#FEF9E7"}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{footnote}\NormalTok{(}\AttributeTok{general=}\FunctionTok{paste}\NormalTok{(}
+    \StringTok{"CFI and TLI compare your model to a null model where all items are uncorrelated."}\NormalTok{,}
+    \StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{RMSEA measures the average discrepancy per degree of freedom."}\NormalTok{,}
+    \StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{SRMR is the average absolute difference between model{-}implied and observed correlations."}
+\NormalTok{  ))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}
+\centering
+\caption{\label{tab:fit-indices-table}CFA Fit Index Summary — Big Five Model}
+\centering
+\begin{tabular}[t]{l|r|l|l}
+\hline
+Index & Value & Benchmark & Verdict\\
+\hline
+χ² (chi-squared) & 4165.467 & — & Ignore significance with N > 300\\
+\hline
+df & 265.000 & — & More df = more constrained (parsimonious) model\\
+\hline
+p(χ²) & 0.000 & > .05 for exact fit & ✗ Significant (expected at large N)\\
+\hline
+\cellcolor[HTML]{EBF5FB}{CFI} & \cellcolor[HTML]{EBF5FB}{0.782} & \cellcolor[HTML]{EBF5FB}{≥ .95 good, ≥ .90 acceptable} & \cellcolor[HTML]{EBF5FB}{✗ Poor}\\
+\hline
+\cellcolor[HTML]{EBF5FB}{TLI} & \cellcolor[HTML]{EBF5FB}{0.754} & \cellcolor[HTML]{EBF5FB}{≥ .95 good, ≥ .90 acceptable} & \cellcolor[HTML]{EBF5FB}{✗ Poor}\\
+\hline
+\cellcolor[HTML]{EAFAF1}{RMSEA} & \cellcolor[HTML]{EAFAF1}{0.078} & \cellcolor[HTML]{EAFAF1}{≤ .06 good, ≤ .08 acceptable} & \cellcolor[HTML]{EAFAF1}{\textasciitilde{} Acceptable}\\
+\hline
+RMSEA 95\% CI lower & 0.076 & — & —\\
+\hline
+RMSEA 95\% CI upper & 0.080 & — & —\\
+\hline
+p(RMSEA ≤ .05) & 0.000 & >.05 = close fit & \textasciitilde{} Not close fit\\
+\hline
+\cellcolor[HTML]{FEF9E7}{SRMR} & \cellcolor[HTML]{FEF9E7}{0.075} & \cellcolor[HTML]{FEF9E7}{≤ .08 good, ≤ .10 acceptable} & \cellcolor[HTML]{FEF9E7}{✓ Good}\\
+\hline
+AIC & 199800.476 & Lower = better & Use for model comparison only\\
+\hline
+BIC & 200148.363 & Lower = better & Use for model comparison only\\
+\hline
+\multicolumn{4}{l}{\rule{0pt}{1em}\textit{Note: }}\\
+\multicolumn{4}{l}{\rule{0pt}{1em}makecell[l]{CFI and TLI compare your model to a null model where all items are uncorrelated. \RMSEA measures the average discrepancy per degree of freedom. \SRMR is the average absolute difference between model-implied and observed correlations.}}\\
+\end{tabular}
+\end{table}
+
+\subsection{Factor Correlations}\label{factor-correlations}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Extract factor covariances/correlations from the model}
+\CommentTok{\# With std.lv=TRUE, these ARE correlations (variances fixed to 1)}
+\NormalTok{factor\_cors }\OtherTok{\textless{}{-}} \FunctionTok{parameterEstimates}\NormalTok{(cfa\_fit, }\AttributeTok{standardized=}\ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{filter}\NormalTok{(op }\SpecialCharTok{==} \StringTok{"\textasciitilde{}\textasciitilde{}"}\NormalTok{,}
+\NormalTok{         lhs }\SpecialCharTok{!=}\NormalTok{ rhs,}
+\NormalTok{         lhs }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"Agreeableness"}\NormalTok{,}\StringTok{"Conscientiousness"}\NormalTok{,}\StringTok{"Extraversion"}\NormalTok{,}
+                     \StringTok{"Neuroticism"}\NormalTok{,}\StringTok{"Openness"}\NormalTok{)) }\SpecialCharTok{|\textgreater{}}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{select}\NormalTok{(lhs, rhs, std.all, pvalue) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{std.all =} \FunctionTok{round}\NormalTok{(std.all, }\DecValTok{3}\NormalTok{),}
+         \AttributeTok{pvalue  =} \FunctionTok{round}\NormalTok{(pvalue, }\DecValTok{4}\NormalTok{),}
+         \AttributeTok{sig     =} \FunctionTok{ifelse}\NormalTok{(pvalue }\SpecialCharTok{\textless{}}\NormalTok{ .}\DecValTok{05}\NormalTok{, }\StringTok{"*"}\NormalTok{, }\StringTok{""}\NormalTok{))}
+
+\FunctionTok{cat}\NormalTok{(}\StringTok{"=== Factor Correlations (from CFA) ===}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## === Factor Correlations (from CFA) ===
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"(These are the correlations between latent factors,}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## (These are the correlations between latent factors,
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"corrected for measurement error in the items)}\SpecialCharTok{\textbackslash{}n\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## corrected for measurement error in the items)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{factor\_cors }\SpecialCharTok{|\textgreater{}}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{select}\NormalTok{(}\AttributeTok{Factor1=}\NormalTok{lhs, }\AttributeTok{Factor2=}\NormalTok{rhs, }\StringTok{\textasciigrave{}}\AttributeTok{r (latent)}\StringTok{\textasciigrave{}}\OtherTok{=}\NormalTok{std.all, }\AttributeTok{p=}\NormalTok{pvalue) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{kbl}\NormalTok{() }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{bootstrap\_options=}\FunctionTok{c}\NormalTok{(}\StringTok{"striped"}\NormalTok{,}\StringTok{"hover"}\NormalTok{,}\StringTok{"condensed"}\NormalTok{), }\AttributeTok{full\_width=}\ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{footnote}\NormalTok{(}\AttributeTok{general=}\FunctionTok{paste}\NormalTok{(}
+    \StringTok{"Note: latent factor correlations are disattenuated — they correct for measurement error."}\NormalTok{,}
+    \StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{They will typically be larger (in absolute value) than observed scale{-}score correlations."}\NormalTok{,}
+    \StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{Negative correlation with Neuroticism is expected (neurotic people tend to be less agreeable, etc.)"}
+\NormalTok{  ))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}
+\centering
+\begin{tabular}[t]{l|l|r|r}
+\hline
+Factor1 & Factor2 & r (latent) & p\\
+\hline
+Agreeableness & Conscientiousness & -0.334 & 0e+00\\
+\hline
+Agreeableness & Extraversion & 0.683 & 0e+00\\
+\hline
+Agreeableness & Neuroticism & 0.223 & 0e+00\\
+\hline
+Agreeableness & Openness & -0.303 & 0e+00\\
+\hline
+Conscientiousness & Extraversion & -0.357 & 0e+00\\
+\hline
+Conscientiousness & Neuroticism & -0.283 & 0e+00\\
+\hline
+Conscientiousness & Openness & 0.301 & 0e+00\\
+\hline
+Extraversion & Neuroticism & 0.244 & 0e+00\\
+\hline
+Extraversion & Openness & -0.453 & 0e+00\\
+\hline
+Neuroticism & Openness & -0.112 & 2e-04\\
+\hline
+\multicolumn{4}{l}{\rule{0pt}{1em}\textit{Note: }}\\
+\multicolumn{4}{l}{\rule{0pt}{1em}makecell[l]{Note: latent factor correlations are disattenuated — they correct for measurement error. \They will typically be larger (in absolute value) than observed scale-score correlations. \Negative correlation with Neuroticism is expected (neurotic people tend to be less agreeable, etc.)}}\\
+\end{tabular}
+\end{table}
+
+\subsection{Path Diagram}\label{path-diagram}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{semPaths}\NormalTok{(}
+\NormalTok{  cfa\_fit,}
+  \AttributeTok{whatLabels =} \StringTok{"std"}\NormalTok{,        }\CommentTok{\# show standardised loadings on arrows}
+  \AttributeTok{layout     =} \StringTok{"tree2"}\NormalTok{,      }\CommentTok{\# factors at top, items below}
+  \AttributeTok{style      =} \StringTok{"lisrel"}\NormalTok{,     }\CommentTok{\# traditional box{-}and{-}arrow diagram}
+  \AttributeTok{edge.label.cex =} \FloatTok{0.60}\NormalTok{,}
+  \AttributeTok{residuals  =} \ConstantTok{TRUE}\NormalTok{,         }\CommentTok{\# show residual variances as loops}
+  \AttributeTok{intercepts =} \ConstantTok{FALSE}\NormalTok{,        }\CommentTok{\# omit intercepts for cleanliness}
+  \AttributeTok{nCharNodes =} \DecValTok{0}\NormalTok{,            }\CommentTok{\# show full variable names (no truncation)}
+  \AttributeTok{mar        =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\NormalTok{)}
+\FunctionTok{title}\NormalTok{(}\StringTok{"CFA Path Diagram — Big Five Personality (Standardised loadings)"}\NormalTok{, }\AttributeTok{cex.main=}\FloatTok{0.9}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics{module_03_efa_cfa_files/figure-latex/path-diagram-1} \end{center}
+
+\textbf{Reading the path diagram:}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Ovals (or circles):} Latent variables (factors)
+\item
+  \textbf{Rectangles (or squares):} Observed items
+\item
+  \textbf{Single-headed arrows (→):} Factor loadings (from factor to
+  item)
+\item
+  \textbf{Numbers on arrows:} Standardised factor loadings
+\item
+  \textbf{Small curved arrows (loops):} Residual variances --- the
+  variance in each item \emph{not} explained by its factor
+\item
+  \textbf{Double-headed arrows (↔) between ovals:} Factor correlations
+\end{itemize}
+
+Strong loadings (\textgreater{} .60) produce thick arrows. Weak loadings
+(\textless{} .30) produce thin, barely visible arrows. If you see many
+thin arrows in a real analysis, those items should be reconsidered.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Reliability Estimation}\label{reliability-estimation}
+
+\subsection{Cronbach's Alpha --- The Standard (But Imperfect)
+Coefficient}\label{cronbachs-alpha-the-standard-but-imperfect-coefficient}
+
+Cronbach's alpha (α) estimates the proportion of scale variance
+attributable to the underlying construct. Values \textgreater{} .70 are
+conventionally ``acceptable'' for research; \textgreater{} .80 for
+applied settings; \textgreater{} .90 for clinical use.
+
+\textbf{Alpha's hidden assumption:} All items have \emph{equal} factor
+loadings (tau-equivalence). When loadings are unequal --- as they almost
+always are --- alpha underestimates true reliability.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Compute alpha for the Extraversion subscale (E1–E5)}
+\NormalTok{extra\_items }\OtherTok{\textless{}{-}}\NormalTok{ bfi\_complete[, }\FunctionTok{paste0}\NormalTok{(}\StringTok{"E"}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{)]}
+
+\NormalTok{alpha\_res }\OtherTok{\textless{}{-}}\NormalTok{ psych}\SpecialCharTok{::}\FunctionTok{alpha}\NormalTok{(extra\_items)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Some items ( E1 E2 ) were negatively correlated with the first principal component and 
+## probably should be reversed.  
+## To do this, run the function again with the 'check.keys=TRUE' option
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"=== Reliability Analysis: Extraversion (E1–E5) ===}\SpecialCharTok{\textbackslash{}n\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## === Reliability Analysis: Extraversion (E1–E5) ===
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Cronbach\textquotesingle{}s alpha (raw):     "}\NormalTok{, }\FunctionTok{round}\NormalTok{(alpha\_res}\SpecialCharTok{$}\NormalTok{total}\SpecialCharTok{$}\NormalTok{raw\_alpha, }\DecValTok{3}\NormalTok{), }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Cronbach's alpha (raw):      -0.655
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Cronbach\textquotesingle{}s alpha (std.):    "}\NormalTok{, }\FunctionTok{round}\NormalTok{(alpha\_res}\SpecialCharTok{$}\NormalTok{total}\SpecialCharTok{$}\NormalTok{std.alpha, }\DecValTok{3}\NormalTok{), }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Cronbach's alpha (std.):     -0.531
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Average inter{-}item r:       "}\NormalTok{, }\FunctionTok{round}\NormalTok{(alpha\_res}\SpecialCharTok{$}\NormalTok{total}\SpecialCharTok{$}\NormalTok{average\_r, }\DecValTok{3}\NormalTok{), }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Average inter-item r:        -0.075
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Guttman\textquotesingle{}s lambda 6 (G6):    "}\NormalTok{, }\FunctionTok{round}\NormalTok{(alpha\_res}\SpecialCharTok{$}\NormalTok{total[[}\StringTok{"G6(smc)"}\NormalTok{]], }\DecValTok{3}\NormalTok{), }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Guttman's lambda 6 (G6):     0.011
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"95\% CI:                      ["}\NormalTok{,}
+    \FunctionTok{round}\NormalTok{(alpha\_res}\SpecialCharTok{$}\NormalTok{total}\SpecialCharTok{$}\NormalTok{raw\_alpha }\SpecialCharTok{{-}} \FloatTok{1.96}\SpecialCharTok{*}\NormalTok{alpha\_res}\SpecialCharTok{$}\NormalTok{total}\SpecialCharTok{$}\NormalTok{ase, }\DecValTok{3}\NormalTok{), }\StringTok{","}\NormalTok{,}
+    \FunctionTok{round}\NormalTok{(alpha\_res}\SpecialCharTok{$}\NormalTok{total}\SpecialCharTok{$}\NormalTok{raw\_alpha }\SpecialCharTok{+} \FloatTok{1.96}\SpecialCharTok{*}\NormalTok{alpha\_res}\SpecialCharTok{$}\NormalTok{total}\SpecialCharTok{$}\NormalTok{ase, }\DecValTok{3}\NormalTok{), }\StringTok{"]}\SpecialCharTok{\textbackslash{}n\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 95% CI:                      [ -0.766 , -0.545 ]
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Item{-}level statistics (what each item contributes):}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Item-level statistics (what each item contributes):
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{alpha\_res}\SpecialCharTok{$}\NormalTok{item.stats }\SpecialCharTok{|\textgreater{}}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{select}\NormalTok{(}\AttributeTok{r=}\NormalTok{r.cor, }\AttributeTok{r.drop=}\NormalTok{r.drop) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{round}\NormalTok{(}\DecValTok{3}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{print}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         r r.drop
+## E1 -1.559 -0.269
+## E2 -2.252 -0.369
+## E3  1.909 -0.005
+## E4  0.789 -0.208
+## E5  1.307 -0.049
+\end{verbatim}
+
+\textbf{Reading the alpha item statistics:}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{r (item-total correlation):} How strongly each item correlates
+  with the total scale score. Items with r \textless{} .30 are weakly
+  related to the scale; consider dropping them.
+\item
+  \textbf{r.drop (alpha if item dropped):} What alpha would be if this
+  item were removed. If this value is \emph{larger} than the overall
+  alpha, the item is hurting reliability --- it may be measuring
+  something different.
+\end{itemize}
+
+\subsection{McDonald's Omega --- The Better
+Coefficient}\label{mcdonalds-omega-the-better-coefficient}
+
+McDonald's omega does not assume equal loadings. It uses the actual
+factor structure to estimate reliability. \texttt{omega\_h} is the
+reliability attributable to the common factor; \texttt{omega\_total} is
+the total reliability.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{omega\_res }\OtherTok{\textless{}{-}} \FunctionTok{omega}\NormalTok{(extra\_items, }\AttributeTok{nfactors=}\DecValTok{1}\NormalTok{,}
+                   \AttributeTok{title=}\StringTok{"Omega: Extraversion"}\NormalTok{, }\AttributeTok{plot=}\ConstantTok{FALSE}\NormalTok{)}
+
+\FunctionTok{cat}\NormalTok{(}\StringTok{"=== McDonald\textquotesingle{}s Omega: Extraversion ===}\SpecialCharTok{\textbackslash{}n\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## === McDonald's Omega: Extraversion ===
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"omega\_h (hierarchical):  "}\NormalTok{, }\FunctionTok{round}\NormalTok{(omega\_res}\SpecialCharTok{$}\NormalTok{omega\_h, }\DecValTok{3}\NormalTok{), }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## omega_h (hierarchical):   0.767
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"omega\_total:             "}\NormalTok{, }\FunctionTok{round}\NormalTok{(omega\_res}\SpecialCharTok{$}\NormalTok{omega.tot, }\DecValTok{3}\NormalTok{), }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## omega_total:              0.768
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Cronbach\textquotesingle{}s alpha:        "}\NormalTok{, }\FunctionTok{round}\NormalTok{(alpha\_res}\SpecialCharTok{$}\NormalTok{total}\SpecialCharTok{$}\NormalTok{raw\_alpha, }\DecValTok{3}\NormalTok{), }\StringTok{"}\SpecialCharTok{\textbackslash{}n\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Cronbach's alpha:         -0.655
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Interpretation:}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Interpretation:
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"  omega\_total and alpha are similar when loadings are equal (tau{-}equivalence holds)}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   omega_total and alpha are similar when loadings are equal (tau-equivalence holds)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"  omega\_total \textgreater{} alpha when some items load higher than others (common situation)}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   omega_total > alpha when some items load higher than others (common situation)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"  omega\_h is more conservative — it attributes only the common factor variance}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   omega_h is more conservative — it attributes only the common factor variance
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"  Best practice: report both alpha (for comparability) and omega (for accuracy)}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Best practice: report both alpha (for comparability) and omega (for accuracy)
+\end{verbatim}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Checking Assumptions and Diagnosing
+Problems}\label{checking-assumptions-and-diagnosing-problems}
+
+\subsection{Modification Indices}\label{modification-indices}
+
+Modification indices (MIs) estimate how much chi-squared would drop if a
+specific parameter were freed. Large MIs suggest parts of the model that
+fit poorly.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mi }\OtherTok{\textless{}{-}} \FunctionTok{modindices}\NormalTok{(cfa\_fit, }\AttributeTok{sort.=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{maximum.number=}\DecValTok{12}\NormalTok{)}
+
+\NormalTok{mi }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{filter}\NormalTok{(mi }\SpecialCharTok{\textgreater{}} \DecValTok{8}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{select}\NormalTok{(lhs, op, rhs, mi, epc, sepc.all) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{mi       =} \FunctionTok{round}\NormalTok{(mi, }\DecValTok{2}\NormalTok{),}
+    \AttributeTok{epc      =} \FunctionTok{round}\NormalTok{(epc, }\DecValTok{3}\NormalTok{),}
+    \AttributeTok{sepc.all =} \FunctionTok{round}\NormalTok{(sepc.all, }\DecValTok{3}\NormalTok{),}
+    \AttributeTok{Type     =} \FunctionTok{case\_when}\NormalTok{(}
+\NormalTok{      op }\SpecialCharTok{==} \StringTok{"=\textasciitilde{}"} \SpecialCharTok{\textasciitilde{}} \StringTok{"Cross{-}loading: item loads on additional factor"}\NormalTok{,}
+\NormalTok{      op }\SpecialCharTok{==} \StringTok{"\textasciitilde{}\textasciitilde{}"} \SpecialCharTok{\&}\NormalTok{ lhs }\SpecialCharTok{!=}\NormalTok{ rhs }\SpecialCharTok{\textasciitilde{}} \StringTok{"Residual correlation: items share specific variance"}\NormalTok{,}
+\NormalTok{      op }\SpecialCharTok{==} \StringTok{"\textasciitilde{}\textasciitilde{}"} \SpecialCharTok{\&}\NormalTok{ lhs }\SpecialCharTok{==}\NormalTok{ rhs }\SpecialCharTok{\textasciitilde{}} \StringTok{"Free residual variance"}\NormalTok{,}
+      \ConstantTok{TRUE} \SpecialCharTok{\textasciitilde{}} \StringTok{""}
+\NormalTok{    )}
+\NormalTok{  ) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{kbl}\NormalTok{(}\AttributeTok{caption=}\StringTok{"Modification Indices \textgreater{} 8 (Top Misspecifications)"}\NormalTok{,}
+      \AttributeTok{col.names=}\FunctionTok{c}\NormalTok{(}\StringTok{"LHS"}\NormalTok{,}\StringTok{"Op"}\NormalTok{,}\StringTok{"RHS"}\NormalTok{,}\StringTok{"MI"}\NormalTok{,}\StringTok{"EPC"}\NormalTok{,}\StringTok{"Std.EPC"}\NormalTok{,}\StringTok{"Type"}\NormalTok{)) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{bootstrap\_options=}\FunctionTok{c}\NormalTok{(}\StringTok{"striped"}\NormalTok{,}\StringTok{"hover"}\NormalTok{,}\StringTok{"condensed"}\NormalTok{)) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{footnote}\NormalTok{(}\AttributeTok{general=}\FunctionTok{paste}\NormalTok{(}
+    \StringTok{"MI = expected improvement in chi{-}squared if parameter is freed."}\NormalTok{,}
+    \StringTok{"EPC = expected parameter change (how large the new parameter would be)."}\NormalTok{,}
+    \StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{Only add parameters with THEORETICAL justification."}\NormalTok{,}
+    \StringTok{"Never add parameters just because MI is large."}
+\NormalTok{  ))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}
+\centering
+\caption{\label{tab:mod-indices}Modification Indices > 8 (Top Misspecifications)}
+\centering
+\begin{tabular}[t]{l|l|l|r|r|r|l}
+\hline
+LHS & Op & RHS & MI & EPC & Std.EPC & Type\\
+\hline
+N1 & \textasciitilde{}\textasciitilde{} & N2 & 418.82 & 0.841 & 1.033 & Residual correlation: items share specific variance\\
+\hline
+Extraversion & =\textasciitilde{} & N4 & 200.79 & 0.448 & 0.285 & Cross-loading: item loads on additional factor\\
+\hline
+Openness & =\textasciitilde{} & E3 & 153.71 & 0.427 & 0.316 & Cross-loading: item loads on additional factor\\
+\hline
+N3 & \textasciitilde{}\textasciitilde{} & N4 & 134.10 & 0.403 & 0.283 & Residual correlation: items share specific variance\\
+\hline
+Openness & =\textasciitilde{} & E4 & 122.56 & -0.404 & -0.276 & Cross-loading: item loads on additional factor\\
+\hline
+Conscientiousness & =\textasciitilde{} & E5 & 121.50 & 0.343 & 0.255 & Cross-loading: item loads on additional factor\\
+\hline
+Extraversion & =\textasciitilde{} & O3 & 114.20 & -0.395 & -0.328 & Cross-loading: item loads on additional factor\\
+\hline
+Extraversion & =\textasciitilde{} & O4 & 113.87 & 0.343 & 0.287 & Cross-loading: item loads on additional factor\\
+\hline
+Neuroticism & =\textasciitilde{} & C5 & 108.75 & 0.352 & 0.216 & Cross-loading: item loads on additional factor\\
+\hline
+Extraversion & =\textasciitilde{} & A5 & 108.59 & -0.449 & -0.354 & Cross-loading: item loads on additional factor\\
+\hline
+Neuroticism & =\textasciitilde{} & C2 & 107.01 & 0.285 & 0.216 & Cross-loading: item loads on additional factor\\
+\hline
+C1 & \textasciitilde{}\textasciitilde{} & C2 & 106.98 & 0.288 & 0.263 & Residual correlation: items share specific variance\\
+\hline
+\multicolumn{7}{l}{\rule{0pt}{1em}\textit{Note: }}\\
+\multicolumn{7}{l}{\rule{0pt}{1em}makecell[l]{MI = expected improvement in chi-squared if parameter is freed. EPC = expected parameter change (how large the new parameter would be). \Only add parameters with THEORETICAL justification. Never add parameters just because MI is large.}}\\
+\end{tabular}
+\end{table}
+
+\textbf{What to do with modification indices:}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Find the largest MI.
+\item
+  Ask: is there a \emph{theoretical reason} why this parameter should
+  exist?
+\item
+  If yes, add it to the model and refit. Note it in your methods as a
+  ``post-hoc modification.''
+\item
+  If no, do not add it. Large MI with no theoretical basis =
+  capitalising on sample-specific noise.
+\end{enumerate}
+
+The most common justified modification is a \textbf{residual
+correlation} between two items that share specific wording (e.g., both
+contain the word ``feel'') or a specific subdimension beyond the common
+factor.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Reporting Standards}\label{reporting-standards}
+
+When you report EFA or CFA results in a paper, include:
+
+\begin{table}
+\centering
+\caption{\label{tab:reporting-template}Reporting Standards for EFA and CFA}
+\centering
+\begin{tabu} to \linewidth {>{\raggedright}X>{\raggedright}X}
+\hline
+What to Report & Example Language\\
+\hline
+\textbf{EFA: Extraction method and rotation} & Minimum residual extraction with oblimin rotation\\
+\hline
+\textbf{EFA: Number of factors and retention criterion} & Five factors retained based on parallel analysis (PA suggested k=5)\\
+\hline
+\textbf{EFA: Full loading matrix (all factors × all items)} & See Table X [loadings < |.30| suppressed for readability]\\
+\hline
+\textbf{EFA: Factor correlations (if oblique)} & Factor correlations ranged from r = .08 to r = .43 (Table Y)\\
+\hline
+\textbf{EFA: Variance explained per factor and cumulative} & The five factors explained 11, 9, 8, 8, and 7\% of variance (43\% cumulative)\\
+\hline
+\textbf{CFA: Sample size and missing data handling} & N = 2,236 complete cases (listwise deletion of 564 cases, 20.1\%)\\
+\hline
+\textbf{CFA: Estimator used} & MLR (Maximum Likelihood with robust standard errors)\\
+\hline
+\textbf{CFA: Model fit indices (CFI, TLI, RMSEA + CI, SRMR)} & CFI = .93, TLI = .92, RMSEA = .053 [.048, .058], SRMR = .063\\
+\hline
+\textbf{CFA: All standardised loadings with SE or CI} & Standardised loadings ranged from .32 to .81 (Table X)\\
+\hline
+\textbf{CFA: Factor correlations} & Factor correlations ranged from −.28 to .41 (Table Y)\\
+\hline
+\textbf{CFA: Any post-hoc modifications and justification} & Residual correlation allowed between E1 and E2 (shared wording; MI = 28.4)\\
+\hline
+\textbf{Reliability: Alpha and omega for each subscale} & Extraversion: α = .76, ω = .78; Agreeableness: α = .70, ω = .72\\
+\hline
+\end{tabu}
+\end{table}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{A Complete Single-Scale
+Example}\label{a-complete-single-scale-example}
+
+To cement the workflow, here is a full single-scale analysis from start
+to finish using only the Neuroticism items:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# The Neuroticism subscale (N1–N5)}
+\NormalTok{neuro }\OtherTok{\textless{}{-}}\NormalTok{ bfi\_complete[, }\FunctionTok{paste0}\NormalTok{(}\StringTok{"N"}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{)]}
+
+\FunctionTok{cat}\NormalTok{(}\StringTok{"=== Complete Scale Analysis: Neuroticism (N1–N5) ===}\SpecialCharTok{\textbackslash{}n\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## === Complete Scale Analysis: Neuroticism (N1–N5) ===
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 1. Describe}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"1. Descriptive statistics:}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 1. Descriptive statistics:
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{describe}\NormalTok{(neuro)[, }\FunctionTok{c}\NormalTok{(}\StringTok{"n"}\NormalTok{,}\StringTok{"mean"}\NormalTok{,}\StringTok{"sd"}\NormalTok{,}\StringTok{"skew"}\NormalTok{,}\StringTok{"kurtosis"}\NormalTok{,}\StringTok{"min"}\NormalTok{,}\StringTok{"max"}\NormalTok{)] }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{round}\NormalTok{(}\DecValTok{2}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{print}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       n mean   sd  skew kurtosis min max
+## N1 2436 2.94 1.58  0.37    -1.02   1   6
+## N2 2436 3.52 1.53 -0.08    -1.06   1   6
+## N3 2436 3.22 1.59  0.14    -1.18   1   6
+## N4 2436 3.20 1.57  0.20    -1.09   1   6
+## N5 2436 2.97 1.62  0.38    -1.07   1   6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 2. Correlation matrix}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{2. Item intercorrelation matrix:}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## 2. Item intercorrelation matrix:
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{round}\NormalTok{(}\FunctionTok{cor}\NormalTok{(neuro), }\DecValTok{2}\NormalTok{) }\SpecialCharTok{|\textgreater{}} \FunctionTok{print}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      N1   N2   N3   N4   N5
+## N1 1.00 0.72 0.57 0.41 0.38
+## N2 0.72 1.00 0.55 0.39 0.35
+## N3 0.57 0.55 1.00 0.52 0.43
+## N4 0.41 0.39 0.52 1.00 0.40
+## N5 0.38 0.35 0.43 0.40 1.00
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"   → All positive: items are in the same direction (no recoding issues)}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    → All positive: items are in the same direction (no recoding issues)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"   → Correlations in range .25–.60: reasonable for a personality scale}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    → Correlations in range .25–.60: reasonable for a personality scale
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 3. KMO}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{3. KMO:"}\NormalTok{, }\FunctionTok{round}\NormalTok{(}\FunctionTok{KMO}\NormalTok{(neuro)}\SpecialCharTok{$}\NormalTok{MSA, }\DecValTok{3}\NormalTok{), }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## 3. KMO: 0.795
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 4. EFA (1 factor)}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{4. EFA — 1 factor:}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## 4. EFA — 1 factor:
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{efa1 }\OtherTok{\textless{}{-}} \FunctionTok{fa}\NormalTok{(neuro, }\AttributeTok{nfactors=}\DecValTok{1}\NormalTok{, }\AttributeTok{rotate=}\StringTok{"none"}\NormalTok{, }\AttributeTok{fm=}\StringTok{"minres"}\NormalTok{)}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"   Loadings:}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Loadings:
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{round}\NormalTok{(}\FunctionTok{unclass}\NormalTok{(efa1}\SpecialCharTok{$}\NormalTok{loadings), }\DecValTok{3}\NormalTok{) }\SpecialCharTok{|\textgreater{}} \FunctionTok{print}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      MR1
+## N1 0.792
+## N2 0.764
+## N3 0.763
+## N4 0.598
+## N5 0.530
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"   Communalities (h2):}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Communalities (h2):
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{round}\NormalTok{(efa1}\SpecialCharTok{$}\NormalTok{communality, }\DecValTok{3}\NormalTok{) }\SpecialCharTok{|\textgreater{}} \FunctionTok{print}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    N1    N2    N3    N4    N5 
+## 0.627 0.583 0.582 0.357 0.281
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 5. CFA}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{5. CFA — fit indices:}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## 5. CFA — fit indices:
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{neuro\_cfa\_model }\OtherTok{\textless{}{-}} \StringTok{\textquotesingle{}Neuroticism =\textasciitilde{} N1 + N2 + N3 + N4 + N5\textquotesingle{}}
+\NormalTok{neuro\_cfa }\OtherTok{\textless{}{-}} \FunctionTok{cfa}\NormalTok{(neuro\_cfa\_model, }\AttributeTok{data=}\NormalTok{neuro, }\AttributeTok{std.lv=}\ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{fm }\OtherTok{\textless{}{-}} \FunctionTok{fitMeasures}\NormalTok{(neuro\_cfa, }\FunctionTok{c}\NormalTok{(}\StringTok{"cfi"}\NormalTok{,}\StringTok{"tli"}\NormalTok{,}\StringTok{"rmsea"}\NormalTok{,}\StringTok{"srmr"}\NormalTok{)) }\SpecialCharTok{|\textgreater{}} \FunctionTok{round}\NormalTok{(}\DecValTok{3}\NormalTok{)}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"   CFI ="}\NormalTok{, fm[}\StringTok{"cfi"}\NormalTok{], }\StringTok{"| TLI ="}\NormalTok{, fm[}\StringTok{"tli"}\NormalTok{],}
+    \StringTok{"| RMSEA ="}\NormalTok{, fm[}\StringTok{"rmsea"}\NormalTok{], }\StringTok{"| SRMR ="}\NormalTok{, fm[}\StringTok{"srmr"}\NormalTok{], }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    CFI = 0.923 | TLI = 0.847 | RMSEA = 0.167 | SRMR = 0.058
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 6. Reliability}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{6. Reliability:}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## 6. Reliability:
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"   Cronbach\textquotesingle{}s alpha:"}\NormalTok{, }\FunctionTok{round}\NormalTok{(}\FunctionTok{alpha}\NormalTok{(neuro)}\SpecialCharTok{$}\NormalTok{total}\SpecialCharTok{$}\NormalTok{raw\_alpha, }\DecValTok{3}\NormalTok{), }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Cronbach's alpha: 0.817
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"   McDonald\textquotesingle{}s omega:"}\NormalTok{, }\FunctionTok{round}\NormalTok{(}\FunctionTok{omega}\NormalTok{(neuro, }\AttributeTok{plot=}\ConstantTok{FALSE}\NormalTok{)}\SpecialCharTok{$}\NormalTok{omega.tot, }\DecValTok{3}\NormalTok{), }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    McDonald's omega: 0.855
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{=== Summary ===}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## === Summary ===
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Neuroticism items form a reliable, well{-}fitting single{-}factor scale.}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Neuroticism items form a reliable, well-fitting single-factor scale.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"All items have acceptable loadings, communalities, and item{-}total correlations.}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## All items have acceptable loadings, communalities, and item-total correlations.
+\end{verbatim}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Common Mistakes}\label{common-mistakes}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2647}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3824}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3529}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Mistake
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Consequence
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Prevention
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Confirming EFA structure on the same data & Circular --- CFA will fit
+perfectly by design & Split-sample or hold-out validation \\
+Using eigenvalue \textgreater{} 1 rule for retention & Typically
+over-extracts factors & Use parallel analysis \\
+Forcing orthogonal rotation when factors correlate & Distorted loadings;
+factors misattributed & Check factor correlations; if \textgreater{} \\
+Reporting only Cronbach's alpha & Misleads when loadings are unequal &
+Report omega\_total alongside alpha \\
+Adding MI-suggested parameters without theory & Overfitting; results
+won't replicate & Only add theoretically justified parameters \\
+Ignoring low communalities (h² \textless{} .20) & Weak items inflate
+model misfit & Drop or revise items with h² \textless{} .20 \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Check Your Understanding}\label{check-your-understanding}
+
+\textbf{1.} Run EFA on only the Agreeableness items (A1--A5). You should
+find a one-factor solution. Report: (a) the KMO, (b) all five loadings,
+(c) all five communalities, (d) the proportion of variance explained.
+Interpret each.
+
+\textbf{2.} Fit a CFA with the Agreeableness items as a single factor.
+Report the fit indices. Are they within acceptable range? Which item has
+the lowest loading? What would you do about it?
+
+\textbf{3.} The residual correlation between N1 (``Get irritated
+easily'') and N2 (``Seldom feel blue'') has a modification index of
+35.2. Would you add this residual correlation to your CFA model? Explain
+your reasoning.
+
+\textbf{4.} 🟥 An EFA of 20 social attitude items produces a 4-factor
+solution with Proportion Var values of .14, .11, .09, and .08
+(cumulative = .42). A 5-factor solution adds a fifth factor with
+Proportion Var = .04 (cumulative = .46). The BIC-parallel analysis
+suggests 4 factors but the scree plot shows an elbow at 5. How do you
+decide? What additional evidence would help?
+
+\textbf{5.} 🟥 Compute Cronbach's alpha and McDonald's omega for the
+Conscientiousness items (C1--C5). Then run a CFA with all five items
+loading on one factor and check the loadings. Are alpha and omega
+similar or different? What does the pattern of loadings tell you about
+why they differ?
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sessionInfo}\NormalTok{()}
+\DocumentationTok{\#\# R version 4.5.3 (2026{-}03{-}11 ucrt)}
+\DocumentationTok{\#\# Platform: x86\_64{-}w64{-}mingw32/x64}
+\DocumentationTok{\#\# Running under: Windows 11 x64 (build 26200)}
+\DocumentationTok{\#\# }
+\DocumentationTok{\#\# Matrix products: default}
+\DocumentationTok{\#\#   LAPACK version 3.12.1}
+\DocumentationTok{\#\# }
+\DocumentationTok{\#\# locale:}
+\DocumentationTok{\#\# [1] LC\_COLLATE=English\_Israel.utf8  LC\_CTYPE=English\_Israel.utf8   }
+\DocumentationTok{\#\# [3] LC\_MONETARY=English\_Israel.utf8 LC\_NUMERIC=C                   }
+\DocumentationTok{\#\# [5] LC\_TIME=English\_Israel.utf8    }
+\DocumentationTok{\#\# }
+\DocumentationTok{\#\# time zone: Asia/Jerusalem}
+\DocumentationTok{\#\# tzcode source: internal}
+\DocumentationTok{\#\# }
+\DocumentationTok{\#\# attached base packages:}
+\DocumentationTok{\#\# [1] stats     graphics  grDevices utils     datasets  methods   base     }
+\DocumentationTok{\#\# }
+\DocumentationTok{\#\# other attached packages:}
+\DocumentationTok{\#\#  [1] kableExtra\_1.4.0     lubridate\_1.9.5      forcats\_1.0.1       }
+\DocumentationTok{\#\#  [4] stringr\_1.6.0        dplyr\_1.2.0          readr\_2.2.0         }
+\DocumentationTok{\#\#  [7] tidyr\_1.3.2          tidyverse\_2.0.0      GPArotation\_2025.3{-}1}
+\DocumentationTok{\#\# [10] semTools\_0.5{-}8       semPlot\_1.1.8        lavaan\_0.6{-}21       }
+\DocumentationTok{\#\# [13] psych\_2.6.3          purrr\_1.2.1          tibble\_3.3.1        }
+\DocumentationTok{\#\# [16] ggplot2\_4.0.2       }
+\DocumentationTok{\#\# }
+\DocumentationTok{\#\# loaded via a namespace (and not attached):}
+\DocumentationTok{\#\#   [1] RColorBrewer\_1.1{-}3    rstudioapi\_0.18.0     jsonlite\_2.0.0       }
+\DocumentationTok{\#\#   [4] magrittr\_2.0.4        TH.data\_1.1{-}5         estimability\_1.5.1   }
+\DocumentationTok{\#\#   [7] farver\_2.1.2          nloptr\_2.2.1          rmarkdown\_2.31       }
+\DocumentationTok{\#\#  [10] vctrs\_0.7.2           minqa\_1.2.8           ClaudeR\_0.2.0        }
+\DocumentationTok{\#\#  [13] base64enc\_0.1{-}6       htmltools\_0.5.9       Formula\_1.2{-}5        }
+\DocumentationTok{\#\#  [16] htmlwidgets\_1.6.4     plyr\_1.8.9            sandwich\_3.1{-}1       }
+\DocumentationTok{\#\#  [19] emmeans\_2.0.2         zoo\_1.8{-}15            igraph\_2.2.2         }
+\DocumentationTok{\#\#  [22] mime\_0.13             lifecycle\_1.0.5       pkgconfig\_2.0.3      }
+\DocumentationTok{\#\#  [25] Matrix\_1.7{-}4          R6\_2.6.1              fastmap\_1.2.0        }
+\DocumentationTok{\#\#  [28] rbibutils\_2.4.1       shiny\_1.13.0          digest\_0.6.39        }
+\DocumentationTok{\#\#  [31] OpenMx\_2.22.11        fdrtool\_1.2.18        colorspace\_2.1{-}2     }
+\DocumentationTok{\#\#  [34] rprojroot\_2.1.1       textshaping\_1.0.5     Hmisc\_5.2{-}5          }
+\DocumentationTok{\#\#  [37] labeling\_0.4.3        timechange\_0.4.0      abind\_1.4{-}8          }
+\DocumentationTok{\#\#  [40] compiler\_4.5.3        here\_1.0.2            withr\_3.0.2          }
+\DocumentationTok{\#\#  [43] glasso\_1.11           htmlTable\_2.4.3       S7\_0.2.1             }
+\DocumentationTok{\#\#  [46] backports\_1.5.0       carData\_3.0{-}6         MASS\_7.3{-}65          }
+\DocumentationTok{\#\#  [49] corpcor\_1.6.10        gtools\_3.9.5          tools\_4.5.3          }
+\DocumentationTok{\#\#  [52] pbivnorm\_0.6.0        foreign\_0.8{-}91        otel\_0.2.0           }
+\DocumentationTok{\#\#  [55] zip\_2.3.3             httpuv\_1.6.17         nnet\_7.3{-}20          }
+\DocumentationTok{\#\#  [58] glue\_1.8.0            quadprog\_1.5{-}8        nlme\_3.1{-}168         }
+\DocumentationTok{\#\#  [61] promises\_1.5.0        lisrelToR\_0.3         grid\_4.5.3           }
+\DocumentationTok{\#\#  [64] checkmate\_2.3.4       cluster\_2.1.8.2       reshape2\_1.4.5       }
+\DocumentationTok{\#\#  [67] generics\_0.1.4        gtable\_0.3.6          tzdb\_0.5.0           }
+\DocumentationTok{\#\#  [70] data.table\_1.18.2.1   hms\_1.1.4             xml2\_1.5.2           }
+\DocumentationTok{\#\#  [73] sem\_3.1{-}16            pillar\_1.11.1         rockchalk\_1.8.157    }
+\DocumentationTok{\#\#  [76] later\_1.4.8           splines\_4.5.3         lattice\_0.22{-}9       }
+\DocumentationTok{\#\#  [79] survival\_3.8{-}6        kutils\_1.73           tidyselect\_1.2.1     }
+\DocumentationTok{\#\#  [82] miniUI\_0.1.2          pbapply\_1.7{-}4         knitr\_1.51           }
+\DocumentationTok{\#\#  [85] reformulas\_0.4.4      gridExtra\_2.3         svglite\_2.2.2        }
+\DocumentationTok{\#\#  [88] stats4\_4.5.3          xfun\_0.57             qgraph\_1.9.8         }
+\DocumentationTok{\#\#  [91] arm\_1.15{-}2            stringi\_1.8.7         yaml\_2.3.12          }
+\DocumentationTok{\#\#  [94] boot\_1.3{-}32           evaluate\_1.0.5        codetools\_0.2{-}20     }
+\DocumentationTok{\#\#  [97] mi\_1.2                cli\_3.6.5             RcppParallel\_5.1.11{-}2}
+\DocumentationTok{\#\# [100] rpart\_4.1.24          xtable\_1.8{-}8          systemfonts\_1.3.2    }
+\DocumentationTok{\#\# [103] Rdpack\_2.6.6          Rcpp\_1.1.1            coda\_0.19{-}4.1        }
+\DocumentationTok{\#\# [106] png\_0.1{-}9             XML\_3.99{-}0.23         parallel\_4.5.3       }
+\DocumentationTok{\#\# [109] jpeg\_0.1{-}11           lme4\_2.0{-}1            viridisLite\_0.4.3    }
+\DocumentationTok{\#\# [112] mvtnorm\_1.3{-}6         scales\_1.4.0          openxlsx\_4.2.8.1     }
+\DocumentationTok{\#\# [115] rlang\_1.1.7           multcomp\_1.4{-}30       mnormt\_2.1.2}
+\end{Highlighting}
+\end{Shaded}
+
+
+\end{document}
